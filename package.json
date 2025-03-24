@@ -2,7 +2,7 @@
   "name": "foodcort",
   "version": "0.1.0",
   "private": true,
-  "homepage": "",
+  "homepage": "https://Weepek.github.io/weepek",
   "proxy": "https://cakesserver.onrender.com",
   "dependencies": {
     "@fontsource/bebas-neue": "^5.2.5",
