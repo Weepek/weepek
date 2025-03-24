@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/weepek/static/css/main.af32aa54.css",
+    "main.js": "/weepek/static/js/main.2db62b99.js",
+    "static/js/453.d8846cae.chunk.js": "/weepek/static/js/453.d8846cae.chunk.js",
+    "static/media/Heroimg1.png": "/weepek/static/media/Heroimg1.32cf1efcba24786b12f3.png",
+    "static/media/featuresimg.png": "/weepek/static/media/featuresimg.5ebd61ddd375468e2ecc.png",
+    "static/media/contact.png": "/weepek/static/media/contact.df6162d61ee1dc56587a.png",
+    "static/media/ser2.png": "/weepek/static/media/ser2.ea7a413ad6384c073f72.png",
+    "static/media/ser5img.png": "/weepek/static/media/ser5img.1f063e8bbbb3bebfd69a.png",
+    "static/media/ser1img.png": "/weepek/static/media/ser1img.f1ec7a326ca5dbc4a566.png",
+    "static/media/bebas-neue-latin-400-normal.woff2": "/weepek/static/media/bebas-neue-latin-400-normal.4352f3c0f3586c850c24.woff2",
+    "static/media/ser3img.png": "/weepek/static/media/ser3img.be36a77830fb1d9e609d.png",
+    "static/media/bebas-neue-latin-400-normal.woff": "/weepek/static/media/bebas-neue-latin-400-normal.35d44c0962992ff863c1.woff",
+    "static/media/ser2img.png": "/weepek/static/media/ser2img.6746043641d5442c0f4e.png",
+    "static/media/bebas-neue-latin-ext-400-normal.woff2": "/weepek/static/media/bebas-neue-latin-ext-400-normal.99be330d826b8dba922c.woff2",
+    "static/media/bebas-neue-latin-ext-400-normal.woff": "/weepek/static/media/bebas-neue-latin-ext-400-normal.40ecee6e5fd01923295f.woff",
+    "index.html": "/weepek/index.html",
+    "main.af32aa54.css.map": "/weepek/static/css/main.af32aa54.css.map",
+    "main.2db62b99.js.map": "/weepek/static/js/main.2db62b99.js.map",
+    "453.d8846cae.chunk.js.map": "/weepek/static/js/453.d8846cae.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.af32aa54.css",
+    "static/js/main.2db62b99.js"
+  ]
+}
