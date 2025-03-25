@@ -34,7 +34,7 @@ function Contactus() {
       <div className="relative flex flex-col md:flex-row items-center justify-center w-full bg-gray-950 h-auto">
         <div className="relative flex flex-col md:flex-row items-center justify-center w-full gap-8 md:gap-4 bg-gray-950 bg-opacity-50 p-6 my-10">
           {/* Contact Form */}
-          <div className="relative flex items-center justify-center w-full md:w-4/12">
+          <div className="relative flex items-center justify-center w-full lg:w-4/12">
             <div className="bg-white bg-opacity-10 backdrop-blur-lg shadow-lg rounded-2xl p-6 w-full max-w-lg border border-white border-opacity-30">
               <form className="space-y-3" onSubmit={onSubmit}>
                 <div>
@@ -88,7 +88,7 @@ function Contactus() {
           </div>
 
           {/* Contact Info */}
-          <div className="relative flex items-center justify-center w-full md:w-3/12 p-1">
+          <div className="relative flex items-center justify-center w-full lg:w-3/12 p-1">
             <div className="bg-white bg-opacity-10 backdrop-blur-lg shadow-lg rounded-2xl p-6 text-white text-center w-full max-w-lg border border-white border-opacity-30">
               <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
               <div className="mb-4 p-3 border-b border-white border-opacity-20">

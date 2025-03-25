@@ -78,7 +78,7 @@ function Navbar() {
         </motion.div>
       )}
 
-      <nav className="fixed w-[90%] md:w-[60%] left-1/2 -translate-x-1/2 z-50 bg-gray-900 shadow-lg rounded-b-3xl">
+      <nav className="fixed w-[90%] md:w-[70%]  lg:w-[60%] left-1/2 -translate-x-1/2 z-50 bg-gray-900 shadow-lg rounded-b-3xl">
         <div className="container mx-auto px-4 sm:px-6 py-4">
           {/* <div className="flex items-center justify-between">
             <div className="text-2xl font-bold text-primary cursor-pointer" onClick={() => scrollToSection("home")}>Weepek</div>

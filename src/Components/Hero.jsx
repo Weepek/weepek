@@ -31,11 +31,11 @@ function Hero() {
                      from-purple-400 via-pink-500 to-red-500 text-transparent 
                      bg-clip-text drop-shadow-lg text-center"
         >
-         <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-400 inline-block text-transparent bg-clip-text"> Welcome to Weepek: </span> Your Web Development Partner
+         <span className="bg-gradient-to-r from-blue-400 via-white to-purple-400 inline-block text-transparent bg-clip-text"> Welcome to Weepek: </span> Your Web Development Partner
         </motion.h1>
-        <p className="text-base md:text-2xl font-normal text-gray-300 mt-4 text-center leading-relaxed">
-          At <span className="text-yellow-500 font-semibold">Weepek</span>, we specialize in creating 
-          <span className="text-cyan-400 font-bold"> stunning websites </span> that drive results. 
+        <p className="text-base md:text-2xl font-normal text-gray-300 mt-8 text-center leading-relaxed p-2">
+          At <span className="font-semibold">Weepek</span>, we specialize in creating 
+          <span className="  font-bold"> stunning websites </span> that drive results. 
           Explore our innovative services and elevate your online presence today.
         </p>
       </div>

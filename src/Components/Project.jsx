@@ -73,18 +73,18 @@ function Project() {
             </motion.span>
 
             <motion.h2
-              className="text-4xl font-bold mt-2 mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
+              className="text-xl  lg:text-4xl font-bold  text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mt-8"
               variants={fadeInVariants}
             >
               <ReactTyped
-                strings={["Your Partner in Quality", "Web Development Excellence"]}
+                strings={["Your Partner in Quality", "Web Development "]}
                 typeSpeed={50}
                 backSpeed={30}
                 loop
               />
             </motion.h2>
 
-            <motion.p className="text-white mb-8 text-lg leading-relaxed">
+            <motion.p className="text-white mb-8 mt-5 text-lg leading-relaxed">
               {"At Weepek, we pride ourselves on delivering top-notch web and app development services tailored to your needs. Our commitment to quality ensures that your projects excel in performance and user experience."
                 .split("")
                 .map((char, index) => (
@@ -98,7 +98,7 @@ function Project() {
              
             <a href="https://poornima2246.github.io/Cakee/" target="_blank" rel="noopener noreferrer">
            <button className="px-6 py-3 rounded-md text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition-colors">
-           View More
+           View Project
             </button>
            </a>
 

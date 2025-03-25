@@ -48,7 +48,7 @@ function AboutUs() {
           {/* Left - Content */}
           <motion.div className="flex-1">
             <motion.h2
-              className="text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
+              className="text-3xl lg:text-4xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
             >
               <ReactTyped
                 strings={["Who We Are?", "About Us!"]}
