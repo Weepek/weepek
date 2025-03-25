@@ -95,12 +95,13 @@ function Project() {
             </motion.p>
 
             <motion.div className="flex space-x-4" variants={fadeInVariants}>
-              <button className="px-6 py-3 rounded-md text-white border border-blue-500 hover:bg-blue-700 transition-colors">
-                Learn More
-              </button>
-              <button className="px-6 py-3 rounded-md text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition-colors">
-                Sign Up
-              </button>
+             
+            <a href="https://poornima2246.github.io/Cakee/" target="_blank" rel="noopener noreferrer">
+           <button className="px-6 py-3 rounded-md text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition-colors">
+           Sign Up
+            </button>
+           </a>
+
             </motion.div>
           </motion.div>
 

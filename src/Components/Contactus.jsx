@@ -36,7 +36,6 @@ function Contactus() {
           {/* Contact Form */}
           <div className="relative flex items-center justify-center w-full md:w-4/12">
             <div className="bg-white bg-opacity-10 backdrop-blur-lg shadow-lg rounded-2xl p-6 w-full max-w-lg border border-white border-opacity-30">
-              {/* <h2 className="text-2xl font-semibold text-white mb-4 text-center">Contact Us</h2> */}
               <form className="space-y-3" onSubmit={onSubmit}>
                 <div>
                   <label className="block text-white text-sm font-medium mb-1">Name</label>
@@ -52,7 +51,7 @@ function Contactus() {
                   <label className="block text-white text-sm font-medium mb-1">Phone Number</label>
                   <input
                     type="text"
-                    name="name"
+                    name="phone"
                     className="w-full px-4 py-2 border border-white border-opacity-30 bg-white bg-opacity-20 text-white placeholder-white placeholder-opacity-70 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
                     placeholder="Enter your number"
                     required
@@ -95,11 +94,11 @@ function Contactus() {
               <div className="mb-4 p-3 border-b border-white border-opacity-20">
                 <h4 className="text-lg font-light mb-1">Founder </h4>
                 <p className="text-lg font-semibold text-purple-400 mb-2"> Poornima </p>
-                <p className="text-sm mb-1">
+                <p className="text-sm mb-1 break-all">
                   ✉ {" "}
                   <a
                     href="mailto:poornima220500@gmail.com"
-                    className="hover:text-blue-300 transition font-mono text-lg text-wrap"
+                    className="hover:text-blue-300 transition font-mono text-sm text-wrap"
                   >
                     poornima220500@gmail.com
                   </a>
@@ -108,11 +107,11 @@ function Contactus() {
               <div className="p-3 border-b border-white border-opacity-20">
                 <h4 className="text-lg font-light mb-1">Co-Founder </h4>
                 <p className="text-lg font-semibold text-primary mb-2"> Kaviya </p>
-                <p className="text-sm mb-1">
+                <p className="text-sm mb-1 break-all">
                   ✉ {" "}
                   <a
                     href="mailto:kaviyapavithra0608@gmail.com"
-                    className="hover:text-blue-300 transition font-mono text-lg text-wrap"
+                    className="hover:text-blue-300 transition font-mono text-sm text-wrap"
                   >
                     kaviyapavithra0608@gmail.com
                   </a>
