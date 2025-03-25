@@ -99,7 +99,7 @@ function Contactus() {
                   ✉ {" "}
                   <a
                     href="mailto:poornima220500@gmail.com"
-                    className="hover:text-blue-300 transition font-mono text-lg"
+                    className="hover:text-blue-300 transition font-mono text-lg text-wrap"
                   >
                     poornima220500@gmail.com
                   </a>
@@ -112,7 +112,7 @@ function Contactus() {
                   ✉ {" "}
                   <a
                     href="mailto:kaviyapavithra0608@gmail.com"
-                    className="hover:text-blue-300 transition font-mono text-lg"
+                    className="hover:text-blue-300 transition font-mono text-lg text-wrap"
                   >
                     kaviyapavithra0608@gmail.com
                   </a>

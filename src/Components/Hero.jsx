@@ -16,7 +16,7 @@ function Hero() {
           <img
             src={Heroimg}
             alt="Cyberpunk background"
-            className="w-full h-full object-cover   rounded-tr-3xl rounded-tl-3xl rounded-bl-2xl rounded-br-2xl"
+            className="w-full h-full object-cover   rounded-tr-3xl rounded-tl-3xl rounded-bl-2xl rounded-br-2xl opacity-30"
           />
         </div>
       </div>
@@ -31,9 +31,9 @@ function Hero() {
                      from-purple-400 via-pink-500 to-red-500 text-transparent 
                      bg-clip-text drop-shadow-lg text-center"
         >
-          Welcome to Weepek: Your Web Development Partner
+         <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-400 inline-block text-transparent bg-clip-text"> Welcome to Weepek: </span> Your Web Development Partner
         </motion.h1>
-        <p className="text-3xl md:text-2xl text-gray-300 mt-4 text-center leading-relaxed">
+        <p className="text-base md:text-2xl font-normal text-gray-300 mt-4 text-center leading-relaxed">
           At <span className="text-yellow-500 font-semibold">Weepek</span>, we specialize in creating 
           <span className="text-cyan-400 font-bold"> stunning websites </span> that drive results. 
           Explore our innovative services and elevate your online presence today.
