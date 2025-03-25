@@ -98,7 +98,7 @@ function Project() {
              
             <a href="https://poornima2246.github.io/Cakee/" target="_blank" rel="noopener noreferrer">
            <button className="px-6 py-3 rounded-md text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition-colors">
-           Sign Up
+           View More
             </button>
            </a>
 
