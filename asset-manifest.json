@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/weepek/static/css/main.27ef3ca5.css",
-    "main.js": "/weepek/static/js/main.7594ceb2.js",
+    "main.css": "/weepek/static/css/main.2f22c7b3.css",
+    "main.js": "/weepek/static/js/main.e3d364e4.js",
     "static/js/453.d8846cae.chunk.js": "/weepek/static/js/453.d8846cae.chunk.js",
     "static/media/Heroimg1.png": "/weepek/static/media/Heroimg1.32cf1efcba24786b12f3.png",
     "static/media/featuresimg.png": "/weepek/static/media/featuresimg.5ebd61ddd375468e2ecc.png",
@@ -16,12 +16,12 @@
     "static/media/bebas-neue-latin-ext-400-normal.woff2": "/weepek/static/media/bebas-neue-latin-ext-400-normal.99be330d826b8dba922c.woff2",
     "static/media/bebas-neue-latin-ext-400-normal.woff": "/weepek/static/media/bebas-neue-latin-ext-400-normal.40ecee6e5fd01923295f.woff",
     "index.html": "/weepek/index.html",
-    "main.27ef3ca5.css.map": "/weepek/static/css/main.27ef3ca5.css.map",
-    "main.7594ceb2.js.map": "/weepek/static/js/main.7594ceb2.js.map",
+    "main.2f22c7b3.css.map": "/weepek/static/css/main.2f22c7b3.css.map",
+    "main.e3d364e4.js.map": "/weepek/static/js/main.e3d364e4.js.map",
     "453.d8846cae.chunk.js.map": "/weepek/static/js/453.d8846cae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.27ef3ca5.css",
-    "static/js/main.7594ceb2.js"
+    "static/css/main.2f22c7b3.css",
+    "static/js/main.e3d364e4.js"
   ]
 }
