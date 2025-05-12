@@ -100,11 +100,11 @@ function Contactus() {
                     href="mailto:poornima220500@gmail.com"
                     className="hover:text-blue-300 transition font-mono text-sm text-wrap"
                   >
-                    poornima220500@gmail.com
+                    poornima.weepek@gmail.com
                   </a>
                 </p>
               </div>
-              <div className="p-3 border-b border-white border-opacity-20">
+              {/* <div className="p-3 border-b border-white border-opacity-20">
                 <h4 className="text-lg font-light mb-1">Co-Founder </h4>
                 <p className="text-lg font-semibold text-primary mb-2"> Kaviya </p>
                 <p className="text-sm mb-1 break-all">
@@ -116,7 +116,7 @@ function Contactus() {
                     kaviyapavithra0608@gmail.com
                   </a>
                 </p>
-              </div>
+              </div> */}
 
               {/* Social Media Links */}
               <div className="flex justify-center gap-6 mt-4">
