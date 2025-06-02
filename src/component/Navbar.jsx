@@ -18,10 +18,10 @@ function Navbar() {
   const [isInHome, setIsInHome] = useState(true); // to detect home section
 
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "project", label: "Project" },
-    { id: "Contact", label: "Contact Us" },
+   { id: "home", label: "Home", path: "/weepek" },
+  { id: "about", label: "About", path: "/weepek/about" },
+  { id: "project", label: "Project", path: "/weepek/project" },
+  { id: "Contact", label: "Contact Us", path: "/weepek/contact" },
   ];
 
   const services = ["Landing Page", "E-commerce Page", "Mobile App", "Custom Website"];
@@ -328,3 +328,4 @@ function Navbar() {
 }
 
 export default Navbar;
+ 

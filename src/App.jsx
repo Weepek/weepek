@@ -1,6 +1,5 @@
- import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import React from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./component/Navbar";
 import Service from "./component/service";
 import Car from "./component/Carscard";
@@ -10,7 +9,6 @@ import Project from "./component/Project";
 import Contact from "./component/Contact";
 import Footer from "./component/Footer";
 
-// Home component with sections for hash-based navigation
 const Home = () => (
   <main>
     <section id="home" className="scroll-mt-20">
@@ -37,9 +35,9 @@ function App() {
       <div className="relative bg-black min-h-screen">
         <Navbar />
         <Routes>
-          <Route path="/weepek" element={<Home />} />
-          <Route path="/carscard" element={<Car />} />
-          <Route path="/contact" element={<Contact />} />
+        <Route path="/weepek" element={<Home />} />
+          <Route path="/weepek/service" element={<Service />} />
+          <Route path="/weepek/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </div>
@@ -48,4 +46,3 @@ function App() {
 }
 
 export default App;
-
