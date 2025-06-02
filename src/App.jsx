@@ -37,7 +37,7 @@ function App() {
       <div className="relative bg-black min-h-screen">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/weepek" element={<Home />} />
           <Route path="/carscard" element={<Car />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
