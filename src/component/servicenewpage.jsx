@@ -1,571 +1,682 @@
-import React, { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import web from "../assets/web1.webp";
-import mobile from "../assets/mobile.webp";
-import Brand from "../assets/Brand.webp";
-import stategic from "../assets/stategic.webp";
-import seo from "../assets/seo.webp";
-import customeaapp from "../assets/customeaapp.png";
-import robotic from "../assets/Robotic.webp";
 
-// Register GSAP plugin
+// import React, { useEffect, useRef } from "react";
+// import { motion } from "framer-motion";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const cardData = [
+//   {
+//     img: "https://img.icons8.com/clouds/100/web.png",
+//     alt: "Website",
+//     title: "Custom Website",
+//     desc: "Fast, secure, mobile-friendly websites tailored to your brand.",
+//     color: "from-purple-500/20 to-purple-800/10",
+//     accent: "purple-400"
+//   },
+//   {
+//     img: "https://img.icons8.com/clouds/100/android.png",
+//     alt: "App",
+//     title: "Mobile App",
+//     desc: "Feature-rich Android & iOS apps with smooth user experience.",
+//     color: "from-[#6190E8] to-[#A7BFE8]",
+//     accent: ""
+//   },
+//   {
+//     img: "https://img.icons8.com/clouds/100/adobe-after-effects.png",
+//     alt: "Logo",
+//     title: "Logo Design",
+//     desc: "Unique logos and brand identities ready for all platforms.",
+//     color: "from-[#090979] to-[#00D4FF]",
+//     accent: "text-[#090979]"
+//   },
+//   {
+//     img: "https://img.icons8.com/clouds/100/bullish.png",
+//     alt: "SEO",
+//     title: "SEO Optimization",
+//     desc: "Improve Google ranking with complete SEO strategies.",
+//     color: "from-[#097970] to-[#00D4FF]",
+//     accent: "emerald-400"
+//   },
+//   {
+//     img: "https://img.icons8.com/clouds/100/commercial.png",
+//     alt: "Marketing",
+//     title: "Digital Marketing",
+//     desc: "Drive growth with targeted ads and social media campaigns.",
+//     color: "from-[#20002c] to-[#cbb4d4]",
+//     accent: "fuchsia-400"
+//   },
+//   {
+//     img: "https://img.icons8.com/clouds/100/robot.png",
+//     alt: "RPA",
+//     title: "Robotic Process",
+//     desc: "Automate tasks using UiPath for speed and accuracy.",
+//     color: "from-[#C33764] to-[#1D2671]",
+//     accent: "indigo-400"
+//   },
+// ];
+
+// const VerticalHoverCard = () => {
+//   const cardsRef = useRef([]);
+//   const containerRef = useRef(null);
+
+//   useEffect(() => {
+//     // Animate each card individually with GSAP
+//     cardsRef.current.forEach((card, index) => {
+//       gsap.fromTo(
+//         card,
+//         { 
+//           opacity: 0,
+//           y: 50,
+//           rotateX: -30
+//         },
+//         {
+//           opacity: 1,
+//           y: 0,
+//           rotateX: 0,
+//           duration: 0.8,
+//           delay: index * 0.1,
+//           ease: "back.out(1.7)",
+//           scrollTrigger: {
+//             trigger: card,
+//             start: "top 85%",
+//             toggleActions: "play none none none"
+//           }
+//         }
+//       );
+//     });
+
+//     // Background animation
+//     gsap.to(".gradient-bg", {
+//       backgroundPosition: "100% 0%",
+//       duration: 20,
+//       repeat: -1,
+//       ease: "linear",
+//       yoyo: true
+//     });
+//   }, []);
+
+//   return (
+//     <section
+//       ref={containerRef}
+//       className="relative overflow-hidden min-h-screen w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8"
+//       id="service-container"
+//     >
+//       {/* Animated gradient background */}
+//       <div className="gradient-bg absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900 bg-[length:300%_300%]"></div>
+      
+//       {/* Floating particles */}
+//       <div className="absolute inset-0 overflow-hidden">
+//         {[...Array(20)].map((_, i) => (
+//           <motion.div
+//             key={i}
+//             className="absolute rounded-full bg-white/5"
+//             initial={{
+//               x: Math.random() * 100,
+//               y: Math.random() * 100,
+//               width: Math.random() * 10 + 2,
+//               height: Math.random() * 10 + 2,
+//               opacity: Math.random() * 0.5 + 0.1
+//             }}
+//             animate={{
+//               x: Math.random() * 100,
+//               y: Math.random() * 100,
+//               transition: {
+//                 duration: Math.random() * 10 + 10,
+//                 repeat: Infinity,
+//                 repeatType: "reverse"
+//               }
+//             }}
+//           />
+//         ))}
+//       </div>
+
+//       {/* Section content */}
+//       <div className="relative z-10 max-w-7xl mx-auto">
+//         {/* Section Heading */}
+//         <motion.div
+//           className="text-center mb-16 lg:mb-24"
+//           initial={{ opacity: 0, y: 40 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8 }}
+//           viewport={{ once: true, margin: "-100px" }}
+//         >
+//           <motion.p 
+//             className="text-sm md:text-base font-medium text-purple-400 mb-3"
+//             initial={{ opacity: 0 }}
+//             whileInView={{ opacity: 1 }}
+//             transition={{ delay: 0.2 }}
+//             viewport={{ once: true }}
+//           >
+//             WHAT WE OFFER
+//           </motion.p>
+//           <motion.h2
+//             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+//             initial={{ opacity: 0 }}
+//             whileInView={{ opacity: 1 }}
+//             transition={{ delay: 0.3 }}
+//             viewport={{ once: true }}
+//           >
+//             Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Digital Solutions</span>
+//           </motion.h2>
+//           <motion.p
+//             className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+//             initial={{ opacity: 0 }}
+//             whileInView={{ opacity: 1 }}
+//             transition={{ delay: 0.4 }}
+//             viewport={{ once: true }}
+//           >
+//             We deliver end-to-end digital experiences that drive growth, enhance engagement, and transform businesses.
+//           </motion.p>
+//         </motion.div>
+
+//         {/* Cards Grid */}
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+//           {cardData.map((card, index) => (
+//             <motion.div
+//               key={index}
+//               ref={(el) => (cardsRef.current[index] = el)}
+//               className={`group relative h-full bg-gradient-to-br ${card.color} border border-white/10 rounded-2xl overflow-hidden p-8 flex flex-col items-center text-center transition-all duration-500 hover:shadow-lg hover:shadow-${card.accent}/20`}
+//               whileHover={{ 
+//                 y: -10,
+//                 scale: 1.02,
+//                 boxShadow: `0 25px 50px -12px rgba(var(--color-${card.accent.replace('-', '-')}), 0.25)`
+//               }}
+//             >
+//               {/* Glow effect */}
+//               <div className={`absolute -inset-0.5 bg-gradient-to-r from-${card.accent} to-pink-600 rounded-lg blur opacity-0 group-hover:opacity-30 transition duration-500`}></div>
+              
+//               {/* Card content */}
+//               <div className="relative z-10 w-full h-full flex flex-col items-center">
+//                 <div className={`w-20 h-20 rounded-xl bg-gradient-to-br from-${card.accent} to-${card.accent}/70 p-3 mb-6 flex items-center justify-center shadow-md`}>
+//                   <img
+//                     src={card.img}
+//                     alt={card.alt}
+//                     className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300"
+//                   />
+//                 </div>
+//                 <h3 className={`text-2xl font-bold text-${card.accent} mb-4`}>
+//                   {card.title}
+//                 </h3>
+//                 <p className="text-gray-300 mb-6 leading-relaxed">
+//                   {card.desc}
+//                 </p>
+//                 <button 
+//                   className={`mt-auto text-sm font-medium text-${card.accent} hover:text-white px-4 py-2 rounded-lg border border-${card.accent}/50 hover:bg-${card.accent}/10 transition-colors duration-300 flex items-center`}
+//                 >
+//                   Learn more
+//                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+//                   </svg>
+//                 </button>
+//               </div>
+//             </motion.div>
+//           ))}
+//         </div>
+
+//         {/* CTA Section */}
+//         <motion.div 
+//           className="mt-24 text-center"
+//           initial={{ opacity: 0, y: 40 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ delay: 0.2 }}
+//           viewport={{ once: true }}
+//         >
+//           <h3 className="text-2xl md:text-3xl font-semibold text-white mb-6">
+//             Ready to transform your digital presence?
+//           </h3>
+//           <div className="flex flex-col sm:flex-row justify-center gap-4">
+//             <motion.button 
+//               className="px-8 py-3.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
+//               whileHover={{ scale: 1.05 }}
+//               whileTap={{ scale: 0.95 }}
+//             >
+//               Get a free consultation
+//             </motion.button>
+//             <motion.button 
+//               className="px-8 py-3.5 bg-transparent border border-white/20 text-white font-medium rounded-lg hover:bg-white/5 transition-all duration-300"
+//               whileHover={{ scale: 1.05 }}
+//               whileTap={{ scale: 0.95 }}
+//             >
+//               View all services
+//             </motion.button>
+//           </div>
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default VerticalHoverCard;
+
+
+// ideaa 2
+
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Sphere } from "@react-three/drei";
+
 gsap.registerPlugin(ScrollTrigger);
 
-// Fallback image for service images
-const fallbackImage = "/assets/fallback-service.png";
-
-const serviceDetails = [
+const cardData = [
   {
-    title: "Custom Website Services",
-    features: [
-      { subtitle: "✅ Responsive Design" },
-      { subtitle: "⚡ Fast Loading" },
-      { subtitle: "🔒 Secure & Reliable" },
-      { subtitle: "🛠️ Custom Features" },
-      { subtitle: "🧹 Easy Maintenance" },
-    ],
-    moreDetails: `We build fast, secure, and mobile-friendly websites tailored to your brand. From responsive design to custom features, everything is optimized for performance and growth.`,
-    image: web,
-    icon: "🌐",
+    img: "https://img.icons8.com/clouds/100/web.png",
+    alt: "Website",
+    title: "Custom Website",
+    desc: "Fast, secure, mobile-friendly websites tailored to your brand.",
+    color: "from-purple-500/20 to-purple-800/10",
+    gradient: "bg-gradient-to-r from-purple-400 to-pink-500",
+    textColor: "text-purple-300",
+    borderColor: "border-purple-400/50",
+    hoverColor: "hover:bg-purple-400/10"
   },
   {
-    title: "Mobile Application Development",
-    features: [
-      { subtitle: "🔄 Cross-Platform Support" },
-      { subtitle: "🧩 Custom APIs" },
-      { subtitle: "🎯 User-Friendly Design" },
-      { subtitle: "🔁 Ongoing Support" },
-      { subtitle: "📈 Scalable Architecture" },
-      { subtitle: "💡 Feature-Rich" },
-    ],
-    moreDetails: `We develop smooth, feature-rich apps for Android and iOS. Designed for scalability, performance, and a seamless user experience across devices.`,
-    icon: "📱",
-    image: mobile,
+    img: "https://img.icons8.com/clouds/100/android.png",
+    alt: "App",
+    title: "Mobile App",
+    desc: "Feature-rich Android & iOS apps with smooth user experience.",
+    color: "from-[#6190E8]/20 to-[#A7BFE8]/10",
+    gradient: "bg-gradient-to-r from-[#6190E8] to-[#A7BFE8]",
+    textColor: "text-[#8ab0ff]",
+    borderColor: "border-[#6190E8]/50",
+    hoverColor: "hover:bg-[#6190E8]/10"
   },
   {
-    title: "Logo & Brand Identity Design",
-    features: [
-      { subtitle: "🎨 Creative Concepts" },
-      { subtitle: "📏 Scalable Designs" },
-      { subtitle: "🧭 Brand Consistency" },
-      { subtitle: "📂 Multiple Formats" },
-      { subtitle: "🌀 Variety of Styles" },
-    ],
-    moreDetails: `Unique logos and full brand identity systems that reflect your values. Delivered in all formats, ready for digital and print use.`,
-    icon: "🎨",
-    image: Brand,
+    img: "https://img.icons8.com/clouds/100/adobe-after-effects.png",
+    alt: "Logo",
+    title: "Logo Design",
+    desc: "Unique logos and brand identities ready for all platforms.",
+    color: "from-[#090979]/20 to-[#00D4FF]/10",
+    gradient: "bg-gradient-to-r from-[#090979] to-[#00D4FF]",
+    textColor: "text-[#00D4FF]",
+    borderColor: "border-[#00D4FF]/50",
+    hoverColor: "hover:bg-[#00D4FF]/10"
   },
   {
-    title: "Digital Marketing Solutions",
-    features: [
-      { subtitle: "📱 Social Media Management" },
-      { subtitle: "💰 Paid Advertising" },
-      { subtitle: "📧 Email Marketing" },
-      { subtitle: "✍️ Content Creation" },
-      { subtitle: "📊 Performance Tracking" },
-    ],
-    moreDetails: `Boost your online presence with targeted ads, engaging content, and social media strategies. We drive traffic, leads, and measurable growth.`,
-    icon: "📢",
-    image: stategic,
+    img: "https://img.icons8.com/clouds/100/bullish.png",
+    alt: "SEO",
+    title: "SEO Optimization",
+    desc: "Improve Google ranking with complete SEO strategies.",
+    color: "from-[#097970]/20 to-[#00D4FF]/10",
+    gradient: "bg-gradient-to-r from-[#097970] to-[#00D4FF]",
+    textColor: "text-emerald-300",
+    borderColor: "border-emerald-400/50",
+    hoverColor: "hover:bg-emerald-400/10"
   },
   {
-    title: "SEO (Search Engine Optimization)",
-    features: [
-      { subtitle: "🔍 Website Audits" },
-      { subtitle: "🗝️ Keyword Research" },
-      { subtitle: "📝 On-Page SEO" },
-      { subtitle: "🔗 Link Building" },
-      { subtitle: "📈 Analytics & Reporting" },
-    ],
-    moreDetails: `Rank higher on Google with our complete SEO solutions—from keyword research to link building and performance reporting.`,
-    icon: "🔍",
-    image: seo,
+    img: "https://img.icons8.com/clouds/100/commercial.png",
+    alt: "Marketing",
+    title: "Digital Marketing",
+    desc: "Drive growth with targeted ads and social media campaigns.",
+    color: "from-[#20002c]/20 to-[#cbb4d4]/10",
+    gradient: "bg-gradient-to-r from-[#20002c] to-[#cbb4d4]",
+    textColor: "text-fuchsia-300",
+    borderColor: "border-fuchsia-400/50",
+    hoverColor: "hover:bg-fuchsia-400/10"
   },
   {
-    title: "Robotic Process Automation with UiPath",
-    features: [
-      { subtitle: "🤖 Automate Tasks" },
-      { subtitle: "🧠 Custom Bots" },
-      { subtitle: "✅ Improve Accuracy" },
-      { subtitle: "📦 Scalable Solutions" },
-      { subtitle: "🔌 System Integration" },
-    ],
-    moreDetails: `Automate repetitive tasks and boost accuracy using UiPath. We build custom bots to streamline your operations and save time.`,
-    icon: "🤖",
-    image: robotic,
-  },
-  {
-    title: "Custom Business Applications with Zoho Creator",
-    features: [
-      { subtitle: "📲 Custom Apps" },
-      { subtitle: "🔁 Automated Workflows" },
-      { subtitle: "📱 Multi-Device Access" },
-      { subtitle: "☁️ Secure Cloud" },
-    ],
-    moreDetails: `Create powerful internal apps without coding. Automate workflows, access data securely from any device, and scale with ease.`,
-    icon: "🧩",
-    image: customeaapp,
+    img: "https://img.icons8.com/clouds/100/robot.png",
+    alt: "RPA",
+    title: "Robotic Process",
+    desc: "Automate tasks using UiPath for speed and accuracy.",
+    color: "from-[#C33764]/20 to-[#1D2671]/10",
+    gradient: "bg-gradient-to-r from-[#C33764] to-[#1D2671]",
+    textColor: "text-indigo-300",
+    borderColor: "border-indigo-400/50",
+    hoverColor: "hover:bg-indigo-400/10"
   },
 ];
 
-const ArrowButton = ({ direction, onClick, disabled }) => (
-  <button
-    className={`arrow-button arrow-button-${direction} ${disabled ? "arrow-button-disabled" : ""}`}
-    onClick={onClick}
-    onKeyDown={(e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        onClick();
-      }
-    }}
-    disabled={disabled}
-    aria-label={`Navigate to ${direction} slide`}
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-10 w-10 hover:bg-purple-100 rounded-3xl text-white transition-all duration-500 p-2"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d={direction === "prev" ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
-      />
-    </svg>
-  </button>
-);
-
-const Services = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [popupIndex, setPopupIndex] = useState(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const [loadedImages, setLoadedImages] = useState({});
-  const intervalRef = useRef(null);
-  const containerRef = useRef(null);
-  const totalSlides = serviceDetails.length;
-
-  // Handle image loading errors
-  const handleImageError = (e) => {
-    console.warn(`Image failed to load: ${e.target.src}, using fallback`);
-    e.target.src = fallbackImage;
-    e.target.onerror = null; // Prevent infinite loop if fallback also fails
-  };
-
-  // Preload images for current, next and previous slides
-  useEffect(() => {
-    const imagesToPreload = [
-      currentIndex,
-      (currentIndex + 1) % totalSlides,
-      (currentIndex - 1 + totalSlides) % totalSlides
-    ].map(idx => serviceDetails[idx].image);
-
-    imagesToPreload.forEach((src) => {
-      if (!loadedImages[src]) {
-        const img = new Image();
-        img.src = src;
-        img.onload = () => {
-          setLoadedImages(prev => ({ ...prev, [src]: true }));
-        };
-        img.onerror = () => {
-          console.warn(`Failed to preload image: ${src}`);
-          img.src = fallbackImage;
-        };
-      }
-    });
-  }, [currentIndex, totalSlides]);
-
-  useEffect(() => {
-    // Ensure containerRef is assigned
-    if (!containerRef.current) return;
-
-    // GSAP animations
-    const ctx = gsap.context(() => {
-      // Delay ScrollTrigger refresh to ensure DOM is ready
-      gsap.delayedCall(0.1, () => {
-        ScrollTrigger.refresh();
-      });
-
-      // Parallax for particles
-      gsap.utils.toArray(".particle", containerRef.current).forEach((element) => {
-        gsap.to(element, {
-          y: -100,
-          ease: "none",
-          scrollTrigger: {
-            trigger: element,
-            scrub: true,
-            start: "top bottom",
-            end: "bottom top",
-          },
-        });
-      });
-
-      // Parallax for carousel images
-      gsap.utils.toArray(".carousel-slide img", containerRef.current).forEach((element) => {
-        gsap.to(element, {
-          y: 30,
-          ease: "none",
-          scrollTrigger: {
-            trigger: element,
-            scrub: true,
-            start: "top bottom",
-            end: "bottom top",
-          },
-        });
-      });
-
-      // Staggered animation for text elements
-      gsap.utils.toArray(".carousel-slide h2, .feature-item", containerRef.current).forEach((element, i) => {
-        gsap.from(element, {
-          opacity: 0,
-          y: 20,
-          delay: i * 0.1,
-          duration: 0.6,
-          scrollTrigger: {
-            trigger: element,
-            start: "top 85%",
-            toggleActions: "play none none reset",
-          },
-        });
-      });
-
-      // Gradient animation
-      if (containerRef.current.classList.contains("animated-gradient")) {
-        gsap.to(containerRef.current, {
-          backgroundPosition: "200% 50%",
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            scrub: true,
-            start: "top bottom",
-            end: "bottom top",
-          },
-        });
-      }
-    }, containerRef);
-
-    // Auto-scroll for carousel
-    if (!isPaused && totalSlides > 1) {
-      intervalRef.current = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % totalSlides);
-      }, 4000);
-    }
-
-    // Cleanup
-    return () => {
-      ctx.revert();
-      clearInterval(intervalRef.current);
-    };
-  }, [isPaused, totalSlides]);
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index % totalSlides);
-  };
-
-  const goPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  const goNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalSlides);
-  };
-
-  const handleInteractionStart = () => setIsPaused(true);
-  const handleInteractionEnd = () => setIsPaused(false);
-
-  const openPopup = (index) => setPopupIndex(index);
-  const closePopup = () => setPopupIndex(null);
+// 3D Floating Orb Component
+const FloatingOrb = ({ position, color }) => {
+  const meshRef = useRef();
+  const [hovered, setHover] = useState(false);
+  
+  useFrame((state, delta) => {
+    meshRef.current.rotation.x += delta * 0.2;
+    meshRef.current.rotation.y += delta * 0.1;
+    meshRef.current.position.y += Math.sin(state.clock.elapsedTime) * 0.01;
+  });
 
   return (
-    <>
-      <style>
-        {`
-          @keyframes particle-float {
-            0% { transform: translateY(0); opacity: 0.6; }
-            100% { transform: translateY(-100vh); opacity: 0; }
-          }
-          @keyframes starry-twinkle {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
-          }
-          @keyframes gradientLoop {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-          .animated-gradient {
-            background: linear-gradient(555deg, #030c26, #000000, #020203, #030c26);
-            background-size: 200% 100%;
-            animation: gradientLoop 8s ease-in-out infinite;
-          }
-          .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            animation: particle-float 10s linear infinite;
-            pointer-events: none;
-            z-index: 2;
-          }
-          .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: starry-twinkle 2s infinite;
-            pointer-events: none;
-            z-index: 2;
-          }
-          .font-poppins {
-            font-family: 'Poppins', sans-serif;
-          }
-          .carousel-slide img {
-            transition: transform 0.3s ease;
-            will-change: transform;
-          }
-          .carousel-slide img:hover {
-            transform: scale(1.05);
-          }
-          .feature-item {
-            transition: transform 0.3s ease;
-            will-change: transform;
-          }
-          .feature-item:hover {
-            transform: translateY(-5px);
-          }
-          .pagination-dot {
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transition: background 0.3s ease;
-            cursor: pointer;
-          }
-          .pagination-dot-active {
-            background: #ffffff;
-          }
-          .arrow-button-disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-          }
-        `}
-      </style>
-      <section
-        ref={containerRef}
-        className="py-20 text-white min-h-screen animated-gradient relative overflow-hidden"
-      >
-        {/* Reduced number of particles/stars for better performance */}
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={`particle-${i}`}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}vw`,
-              top: `${Math.random() * 100}vh`,
-              animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${8 + Math.random() * 6}s`,
-            }}
-          />
-        ))}
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={`star-${i}`}
-            className="star"
-            style={{
-              left: `${Math.random() * 100}vw`,
-              top: `${Math.random() * 100}vh`,
-              animationDelay: `${Math.random() * 2}s`,
-            }}
-          />
-        ))}
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Intro Text */}
-          <motion.div
-            className="mb-12 text-center max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <h1 className="text-4xl sm:text-5xl lg:text-5xl 2xl:text-7xl font-extrabold mb-4 font-poppins text-transparent bg-clip-text bg-gradient-to-r from-blue-100 to-purple-400">
-              Our Services
-            </h1>
-            <p className="text-lg lg:text-xl 2xl:text-2xl text-gray-200 font-poppins">
-              We provide expert digital solutions to help your business succeed in today's competitive market.
-            </p>
-          </motion.div>
-
-          {/* Carousel Container */}
-          <div
-            className="carousel-container relative"
-            onTouchStart={handleInteractionStart}
-            onTouchEnd={handleInteractionEnd}
-          >
-            <motion.div
-              className="carousel-slide"
-              key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <div className="flex flex-col lg:flex-row items-center gap-8 ">
-                {/* Optimized Image Component */}
-                <motion.div
-                  className="w-full lg:w-[31rem] 2xl:w-[75rem] 2xl:h-[40rem] h-96 lg:h-[31rem] rounded-xl overflow-hidden shadow-2xl relative gap-20 mt-20"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  {/* Loading placeholder */}
-                  {!loadedImages[serviceDetails[currentIndex].image] && (
-                    <div className="absolute inset-0 bg-gray-800 animate-pulse flex items-center justify-center">
-                      <span className="text-4xl">{serviceDetails[currentIndex].icon}</span>
-                    </div>
-                  )}
-                  
-                  {/* Optimized image */}
-                  <motion.img
-                    src={serviceDetails[currentIndex].image}
-                    alt={serviceDetails[currentIndex].title}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                    className={`w-full
-                       h-full object-cover transition-opacity duration-300 ${
-                      loadedImages[serviceDetails[currentIndex].image] ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    loading="lazy"
-                    decoding="async"
-                    onLoad={() => setLoadedImages(prev => ({
-                      ...prev,
-                      [serviceDetails[currentIndex].image]: true
-                    }))}
-                    onError={handleImageError}
-                  />
-                </motion.div>
-
-                {/* Text Content */}
-                <motion.div
-                  className="w-10/12 lg:w-8/12 space-y-6"
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                >
-                  <h2 className="text-2xl sm:text-3xl lg:text-5xl 2xl:text-7xl  font-bold leading-tight font-poppins text-white">
-                    {serviceDetails[currentIndex].title}
-                  </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Show only first 3 features on the main page */}
-                    {serviceDetails[currentIndex].features.slice(0, 3).map((feature, idx) => (
-                      <div
-                        key={idx}
-                        className="bg-white/10 border border-gray-600 p-4 rounded-xl  shadow-md hover:shadow-lg transition-shadow duration-300 feature-item"
-                        aria-label={`Feature: ${feature.subtitle}`}
-                      >
-                        <h3 className="text-sm  sm:text-base lg:text-xl 2xl:text-2xl font-semibold text-white mb-1 font-poppins">
-                          {feature.subtitle}
-                        </h3>
-                      </div>
-                    ))}
-                    {/* "View More" button to show remaining features */}
-                    {serviceDetails[currentIndex].features.length > 3 && (
-                      <div 
-                        className="bg-white/10 border border-gray-600 p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 feature-item cursor-pointer flex items-center justify-center"
-                        onClick={() => openPopup(currentIndex)}
-                      >
-                        <h3 className="text-sm sm:text-base font-semibold text-white mb-1 font-poppins">
-                          +{serviceDetails[currentIndex].features.length - 3} more features
-                        </h3>
-                      </div>
-                    )}
-                  </div>
-                  <button
-                    className="mt-4 inline-block bg-purple-500 hover:bg-purple-600 transition-colors text-white font-semibold px-6 py-2 rounded-lg font-poppins  lg:text-xl 2xl:text-2xl"
-                    onClick={() => openPopup(currentIndex)}
-                  >
-                    Read More
-                  </button>
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {/* Navigation Arrows */}
-            {totalSlides > 1 && (
-              <div className="arrow-buttons absolute -bottom-5 right-4 z-20 flex gap-4">
-                <ArrowButton direction="prev" onClick={goPrev} disabled={totalSlides <= 1} />
-                <ArrowButton direction="next" onClick={goNext} disabled={totalSlides <= 1} />
-              </div>
-            )}
-
-            {/* Pagination Dots */}
-            {totalSlides > 1 && (
-              <div className="pagination flex justify-center gap-2 mt-6">
-                {serviceDetails.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`pagination-dot ${index === currentIndex ? "pagination-dot-active" : ""}`}
-                    onClick={() => goToSlide(index)}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Popup */}
-        {popupIndex !== null && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closePopup}
-          >
-            <motion.div
-              className="bg-white rounded-xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold mb-4 font-poppins text-gray-800">
-                {serviceDetails[popupIndex].title}
-              </h2>
-              <p className="text-gray-700 text-base sm:text-lg mb-4 font-poppins">
-                {serviceDetails[popupIndex].moreDetails}
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                {serviceDetails[popupIndex].features.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-gray-100 border border-gray-200 p-4 rounded-xl"
-                  >
-                    <h3 className="text-sm sm:text-base font-semibold text-gray-800 mb-1 font-poppins">
-                      {feature.subtitle}
-                    </h3>
-                  </div>
-                ))}
-              </div>
-              <button
-                className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg font-poppins"
-                onClick={closePopup}
-              >
-                Close
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </section>
-    </>
+    <Sphere 
+      ref={meshRef}
+      position={position}
+      onPointerOver={() => setHover(true)}
+      onPointerOut={() => setHover(false)}
+    >
+      <meshStandardMaterial 
+        color={color} 
+        emissive={color}
+        emissiveIntensity={hovered ? 0.5 : 0.2}
+        roughness={0.3}
+        metalness={0.7}
+      />
+    </Sphere>
   );
 };
 
-export default Services;
+// 3D Scene Background
+const ThreeDScene = () => {
+  return (
+    <Canvas camera={{ position: [0, 0, 10], fov: 25 }}>
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} intensity={0.8} />
+      <FloatingOrb position={[-3, 1, 0]} color="#8a2be2" />
+      <FloatingOrb position={[3, -1, 0]} color="#1e90ff" />
+      <FloatingOrb position={[0, 2, -5]} color="#ff6347" />
+      <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
+    </Canvas>
+  );
+};
+
+const VerticalHoverCard = () => {
+  const cardsRef = useRef([]);
+  const containerRef = useRef(null);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    // Animate title section
+    gsap.from(".section-title", {
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    // Animate cards with 3D tilt effect
+    cardsRef.current.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0,
+          y: 80,
+          rotationX: -15,
+          transformOrigin: "center bottom",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          rotationX: 0,
+          delay: index * 0.15,
+          duration: 1,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+
+    // Background animation
+    gsap.to(".gradient-bg", {
+      backgroundPosition: "100% 0%",
+      duration: 30,
+      repeat: -1,
+      ease: "linear",
+      yoyo: true,
+    });
+
+    // Interactive cursor effect
+    const cursor = document.querySelector(".custom-cursor");
+    document.addEventListener("mousemove", (e) => {
+      gsap.to(cursor, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    });
+
+    return () => {
+      document.removeEventListener("mousemove", () => {});
+    };
+  }, []);
+
+  // Update background when card is hovered
+  useEffect(() => {
+    if (hoveredCard !== null) {
+      controls.start({
+        background: `radial-gradient(circle at center, ${cardData[hoveredCard].textColor.replace('text-', '')}20 0%, transparent 70%)`,
+        transition: { duration: 0.5 }
+      });
+    } else {
+      controls.start({
+        background: "transparent",
+        transition: { duration: 0.5 }
+      });
+    }
+  }, [hoveredCard, controls]);
+
+  return (
+    <section
+      ref={containerRef}
+      className="relative overflow-hidden min-h-screen w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8"
+      id="service-container"
+    >
+      {/* 3D Background Scene */}
+      <div className="absolute inset-0 w-full h-full opacity-10 pointer-events-none">
+        <ThreeDScene />
+      </div>
+
+      {/* Gradient background */}
+      <div className="gradient-bg absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900 bg-[length:300%_300%]"></div>
+
+      {/* Custom cursor */}
+      <div className="custom-cursor fixed w-8 h-8 rounded-full border-2 border-white/50 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 z-50 mix-blend-difference backdrop-filter backdrop-blur-sm"></div>
+
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(30)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-white/5"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 10 + 2}px`,
+              height: `${Math.random() * 10 + 2}px`,
+              opacity: Math.random() * 0.5 + 0.1,
+            }}
+            animate={{
+              x: ["0%", `${Math.random() * 100 - 50}%`],
+              y: ["0%", `${Math.random() * 100 - 50}%`],
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 30 + Math.random() * 30,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "linear",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Section content */}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Title */}
+        <div className="text-center mb-16 lg:mb-24">
+          <motion.h4
+            className="section-title text-sm md:text-base font-medium text-purple-400 mb-3"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.4 }}
+          >
+            WHAT WE OFFER
+          </motion.h4>
+
+          <motion.h2
+            className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            viewport={{ once: true, amount: 0.4 }}
+          >
+            Comprehensive{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+              Digital Solutions
+            </span>
+          </motion.h2>
+
+          <motion.p
+            className="section-title text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.4 }}
+          >
+            We deliver end-to-end digital experiences that drive growth, enhance engagement, and transform businesses.
+          </motion.p>
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {cardData.map((card, index) => (
+            <motion.div
+              key={index}
+              ref={(el) => (cardsRef.current[index] = el)}
+              className={`group relative h-full bg-gradient-to-br ${card.color} border ${card.borderColor} rounded-2xl overflow-hidden p-8 flex flex-col items-center text-center backdrop-blur-sm`}
+              whileHover={{
+                y: -15,
+                scale: 1.03,
+                rotateX: 5,
+                rotateY: 5,
+                boxShadow: `0 25px 50px -12px ${card.textColor.replace('text-', '')}30`,
+                transition: {
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 15,
+                },
+              }}
+              onHoverStart={() => setHoveredCard(index)}
+              onHoverEnd={() => setHoveredCard(null)}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {/* Hover glow effect */}
+              <motion.div
+                className={`absolute -inset-0.5 ${card.gradient} rounded-lg blur opacity-0 group-hover:opacity-20`}
+                animate={index === hoveredCard ? { opacity: 0.2 } : { opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+              
+              <div className="relative z-10 w-full h-full flex flex-col items-center">
+                {/* 3D inspired icon container */}
+                <motion.div 
+                  className={`w-20 h-20 rounded-xl ${card.gradient} p-3 mb-6 flex items-center justify-center shadow-lg`}
+                  whileHover={{ 
+                    scale: 1.1,
+                    rotateY: 180,
+                    transition: { duration: 0.6 }
+                  }}
+                >
+                  <img
+                    src={card.img}
+                    alt={card.alt}
+                    className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300"
+                  />
+                </motion.div>
+                
+                <h3 className={`text-2xl font-bold ${card.textColor} mb-4`}>
+                  {card.title}
+                </h3>
+                
+                <p className="text-gray-200 mb-6 leading-relaxed">
+                  {card.desc}
+                </p>
+                
+                <motion.button 
+                  className={`mt-auto text-sm font-medium ${card.textColor} hover:text-white px-4 py-2 rounded-lg border ${card.borderColor} ${card.hoverColor} transition-colors duration-300 flex items-center`}
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: `0 0 15px ${card.textColor.replace('text-', '')}50`,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Learn more
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </motion.button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <motion.div
+          className="mt-24 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true, amount: 0.4 }}
+        >
+          <h3 className="text-2xl md:text-3xl font-semibold text-white mb-6">
+            Ready to transform your digital presence?
+          </h3>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <motion.button
+              className="px-8 py-3.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg relative overflow-hidden group"
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 0 25px rgba(192, 132, 252, 0.5)"
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="relative z-10">Get a free consultation</span>
+              <motion.span 
+                className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "0%" }}
+                transition={{ duration: 0.6 }}
+              />
+            </motion.button>
+            
+            <motion.button
+              className="px-8 py-3.5 bg-transparent border border-white/20 text-white font-medium rounded-lg hover:bg-white/5 transition-all duration-300 relative overflow-hidden group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="relative z-10">View all services</span>
+              <motion.span 
+                className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100"
+                initial={{ width: "0%" }}
+                whileHover={{ width: "100%" }}
+                transition={{ duration: 0.4 }}
+              />
+            </motion.button>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Interactive background highlight */}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none"
+        animate={controls}
+        style={{
+          background: "transparent",
+        }}
+      />
+    </section>
+  );
+};
+
+export default VerticalHoverCard;

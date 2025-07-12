@@ -56,7 +56,7 @@ const FAQSection = () => {
 
   return (
     <motion.div
-      className="max-w-4xl mx-auto mt-10 items-center justify-center    px-4  py-16 min-h-screen"
+      className="max-w-4xl mx-auto mt-10 items-center justify-center  bg-black   px-4  py-16 min-h-screen"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}

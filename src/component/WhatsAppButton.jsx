@@ -45,7 +45,7 @@ const WhatsAppButton = () => {
       onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#25D366')}
     >
       <FaWhatsapp  className='text-5xl sm:text-3xl' />
-      <span className='font-Nunito hidden xl:inline lg:text-2xl'>Chat with us</span>
+      {/* <span className='font-Nunito hidden xl:inline lg:text-2xl'>Chat with us</span> */}
     </a>
   );
 };
