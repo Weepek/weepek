@@ -801,13 +801,13 @@ const Project = () => {
       title: "LOGO DESIGN",
       subtitle: "Web Development",
       image: logodesign2,
-      url: "https://example.com/another-project"
+      // url: "https://example.com/another-project"
     },
     {
       title: "LOGO DESIGN",
       subtitle: "Web Development",
       image: logodesign,
-      url: "https://example.com/another-project"
+      // url: "https://example.com/another-project"
     }
   ], []);
 
