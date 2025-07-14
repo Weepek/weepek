@@ -48,4 +48,14 @@
 html {
   scroll-behavior: smooth;
 }
- 
+/* .floating-nav-button {
+  position: fixed;
+  right: 1.5rem;
+  top: 1.5rem;
+  z-index: 1000;
+  transform: translateZ(0);
+  will-change: transform;
+}
+  */
+
+  

@@ -25,14 +25,7 @@ const WhatsAppButton = () => {
     transition: 'background-color 0.3s ease',
   };
 
-  const iconStyle = {
-    fontSize: '1rem',
-  };
-
-  const textStyle = {
-    fontSize: '14px',
-    fontWeight: '500',
-  };
+ 
 
   return (
     <a
@@ -44,7 +37,7 @@ const WhatsAppButton = () => {
       onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#1ebe57')}
       onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#25D366')}
     >
-      <FaWhatsapp  className='text-5xl sm:text-3xl' />
+      <FaWhatsapp  className='text-2xl sm:text-3xl' />
       {/* <span className='font-Nunito hidden xl:inline lg:text-2xl'>Chat with us</span> */}
     </a>
   );

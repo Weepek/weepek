@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://Weepek.github.io/weepek",
-  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -19,8 +18,8 @@
     "@coreui/react": "^5.7.0",
     "@fullpage/react-fullpage": "^0.1.48",
     "@gsap/react": "^2.1.2",
-    "@react-three/drei": "^10.0.8",
-    "@react-three/fiber": "^9.1.2",
+    "@react-three/drei": "^10.5.0",
+    "@react-three/fiber": "^9.2.0",
     "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.1.7",
     "clsx": "^2.1.1",
