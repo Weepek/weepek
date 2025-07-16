@@ -673,7 +673,7 @@ const Project = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top bottom",
+          start: "top top",
           end: "top 80%",
           scrub: 1,
           markers: false
@@ -706,7 +706,7 @@ const Project = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: heroProjectRef.current,
-          start: "top 80%",
+          start: " top top ",
           end: "top 50%",
           scrub: 1,
           markers: false
@@ -724,7 +724,7 @@ const Project = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: projectCardsRef.current,
-            start: "top 80%",
+            start: "top  top ",
             end: "top 50%",
             scrub: 1,
             markers: false

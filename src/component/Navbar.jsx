@@ -1,21 +1,32 @@
+ 
+ 
+ 
+ //working 
+ 
+
 // import React, { useState, useEffect } from "react";
 // import { motion } from "framer-motion";
-// import { Link, useLocation , useNavigate } from "react-router-dom";
-// import { Menu, X, ToggleLeft, ToggleRight } from "lucide-react";
+// import { Link, useLocation, useNavigate } from "react-router-dom";
+// import { Menu, X, ToggleLeft, ToggleRight, User } from "lucide-react";
 // import logo from "../assets/logo3.png";
-
-// import Signup from '../Signup.jsx';
 // import gsap from "gsap";
-// import {useGSAP} from '@gsap/react';
+// import { useGSAP } from "@gsap/react";
 
 // function Navbar() {
 //   const [isOpen, setIsOpen] = useState(false);
 //   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 //   const [selectedService, setSelectedService] = useState("");
 //   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 //   const [isHomeInView, setIsHomeInView] = useState(true);
+//   const [isLoggedIn, setIsLoggedIn] = useState(false);
+//   const [userData, setUserData] = useState(null);
+//   const [isScrolled, setIsScrolled] = useState(false);
 //   const location = useLocation();
-//    const navigate = useNavigate(); // Added navigate hook
+//   const navigate = useNavigate();
+
+//   // Pages where navbar should be hidden
+//   const hiddenPages = ["/weepek/Login", "/weepek/Signup"];
 
 //   const navItems = [
 //     { id: "home", label: "Home", link: "/weepek/" },
@@ -32,24 +43,69 @@
 //     "Other"
 //   ];
 
-//   useGSAP(()=>{
-//     const navTween = gsap.timeline({
-//       scrollTrigger:{
-//         trigger: 'nav',
-//         start: "bottom top "
-//       }
-//     });
-
-//     navTween.fromTo( 'nav' , {backgroundColor: 'transparent'} , {
-//        duration: 1,
-//        ease: 'power1.inOut'
-
-//   });
-
-//   });
-
+//   // Check authentication status on component mount
 //   useEffect(() => {
-//     // Observe the home section to detect when it's in view
+//     const token = localStorage.getItem("token");
+//     const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+//     const user = JSON.parse(localStorage.getItem("user"));
+
+//     if (token && loggedIn && user) {
+//       setIsLoggedIn(true);
+//       setUserData(user);
+//     }
+//   }, []);
+
+//   // Scroll handler
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       setIsScrolled(window.scrollY > 50);
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   // Click outside handler for user dropdown
+//   useEffect(() => {
+//     const handleClickOutside = (event) => {
+//       if (
+//         isUserDropdownOpen &&
+//         !event.target.closest(".user-dropdown-container")
+//       ) {
+//         setIsUserDropdownOpen(false);
+//       }
+//     };
+
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, [isUserDropdownOpen]);
+
+//   useGSAP(() => {
+//     gsap.fromTo(
+//       "nav",
+//       { backgroundColor: "transparent" },
+//       {
+//         backgroundColor: "rgba(0, 0, 0, 0.8)",
+//         duration: 1,
+//         ease: "power1.inOut",
+//         scrollTrigger: {
+//           trigger: "nav",
+//           start: "bottom top",
+//           toggleActions: "play none none reverse"
+//         }
+//       }
+//     );
+//   });
+
+//   // Home section visibility
+//   useEffect(() => {
+//     if (location.pathname !== "/weepek/") {
+//       setIsHomeInView(false);
+//       return;
+//     }
+
 //     const homeSection = document.getElementById("home");
 //     const observer = new IntersectionObserver(
 //       ([entry]) => {
@@ -67,10 +123,10 @@
 //         observer.unobserve(homeSection);
 //       }
 //     };
-//   }, []);
+//   }, [location.pathname]);
 
+//   // Handle hash links
 //   useEffect(() => {
-//     // Handle hash-based scrolling after navigation
 //     const hash = location.hash;
 //     if (hash) {
 //       const sectionId = hash.replace("#", "");
@@ -83,10 +139,8 @@
 
 //   const scrollToSection = (sectionId) => {
 //     if (location.pathname !== "/weepek/") {
-//       // Navigate to home page with hash
-//       window.location.href = `/weepek/#${sectionId}`;
+//       navigate(`/#${sectionId}`);
 //     } else {
-//       // Scroll to section if already on home page
 //       const section = document.getElementById(sectionId);
 //       if (section) {
 //         section.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -118,6 +172,25 @@
 //     }
 //   };
 
+//   const handleUserButtonClick = () => {
+//     if (isLoggedIn) {
+//       setIsUserDropdownOpen(!isUserDropdownOpen);
+//     } else {
+//       navigate("/weepek/Login");
+//       setIsOpen(false);
+//     }
+//   };
+
+//   const handleLogout = () => {
+//     localStorage.removeItem("token");
+//     localStorage.removeItem("isLoggedIn");
+//     localStorage.removeItem("user");
+//     setIsLoggedIn(false);
+//     setUserData(null);
+//     setIsUserDropdownOpen(false);
+//     navigate("/weepek/");
+//   };
+
 //   const menuVariants = {
 //     hidden: { opacity: 0, y: -20 },
 //     visible: {
@@ -126,6 +199,15 @@
 //       transition: { duration: 0.5, ease: "easeInOut" }
 //     }
 //   };
+
+//   // Don't render navbar on login/signup pages
+//   if (hiddenPages.includes(location.pathname)) {
+//     return null;
+//   }
+
+//   // Determine which navbar to show
+//   const showFloatingButton = !isHomeInView || location.pathname !== "/weepek/";
+//   const showDesktopNavbar = !showFloatingButton && location.pathname === "/weepek/";
 
 //   return (
 //     <>
@@ -144,14 +226,16 @@
 //         </motion.div>
 //       )}
 
-//       {/* Desktop Navbar */}
-//       {isHomeInView && location.pathname === "/weepek/" && (
+//       {/* Desktop Navbar - Only shown on home page when home section is in view */}
+//       {showDesktopNavbar && (
 //         <motion.nav
 //           initial={{ opacity: 0, y: -20 }}
 //           animate={{ opacity: 1, y: 0 }}
 //           exit={{ opacity: 0, y: -20 }}
 //           transition={{ duration: 0.3 }}
-//           className="fixed w-[90%] md:w-[70%] lg:w-[80%] left-1/2 -translate-x-1/2 z-50 bg-white/10 backdrop-blur-md border border-white/20 rounded-b-3xl"
+//           className={`fixed w-[90%] md:w-[70%] lg:w-[80%] left-1/2 -translate-x-1/2 z-50 ${
+//             isScrolled ? "bg-black/80 backdrop-blur-md" : "bg-white/10 backdrop-blur-md"
+//           } border border-white/20 rounded-b-3xl`}
 //         >
 //           <div className="container mx-auto px-4 sm:px-6 py-4">
 //             <div className="flex items-center justify-between">
@@ -175,7 +259,7 @@
 //                     {item.link ? (
 //                       <Link
 //                         to={item.link}
-//                         className="text-blue-100 hover:text-blue-300 text-xl hover:text-third transition-all duration-200  "
+//                         className="text-blue-100 hover:text-blue-300 text-xl hover:text-third transition-all duration-200"
 //                         aria-label={`Go to ${item.label} page`}
 //                       >
 //                         {item.label}
@@ -183,24 +267,21 @@
 //                     ) : (
 //                       <button
 //                         onClick={() => scrollToSection(item.id)}
-//                         className="text-blue-100 hover:text-blue-300 text-xl hover:text-third transition-colors  tansition-all duration-200 "
+//                         className="text-blue-100 hover:text-blue-300 text-xl hover:text-third transition-colors tansition-all duration-200"
 //                         aria-label={`Go to ${item.label} section`}
 //                       >
 //                         {item.label}
 //                       </button>
 //                     )}
-
-//                     {/* Hover underline animation */}
 //                     <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-purple-500 transition-all duration-500 group-hover:w-5"></span>
 //                   </span>
 //                 ))}
 //               </div>
 
-//               {/* Get In Touch */}
+//               {/* Right side buttons */}
 //               <div className="hidden lg:flex items-center space-x-4">
-
 //                 <button
-//                   className="relative px-4 py-2 border border-purple-200 text-white rounded-full group overflow-hidden    "
+//                   className="relative px-4 py-2 border border-purple-200 text-white rounded-full group overflow-hidden"
 //                   onClick={() => setIsModalOpen(true)}
 //                   aria-label="Open contact form"
 //                 >
@@ -212,13 +293,64 @@
 //                   <span className="relative z-10">Get In Touch</span>
 //                 </button>
 
-//                    {/* Signup button */}
-//                  <a href="">
-//                  <button>
-//                   <img width="30" height="30" src="https://img.icons8.com/scribby/100/gender-neutral-user.png" alt="gender-neutral-user"/>
-//                 </button>
-//                 </a>
+//                 {/* User dropdown */}
+//                 <div className="relative user-dropdown-container">
+//                   <button
+//                     onClick={handleUserButtonClick}
+//                     className="p-2 rounded-full hover:bg-white/10 transition-colors relative"
+//                     aria-label="User account"
+//                   >
+//                     {isLoggedIn ? (
+//                       <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white font-semibold">
+//                         {userData?.name?.charAt(0).toUpperCase() || "U"}
+//                       </div>
+//                     ) : (
+//                       <User className="text-white" size={24} />
+//                     )}
+//                   </button>
 
+//                   {isLoggedIn && isUserDropdownOpen && (
+//                     <motion.div
+//                       className="absolute right-0 mt-2 w-48 bg-gray-900/95 backdrop-blur-sm rounded-xl shadow-xl border border-white/20 overflow-hidden"
+//                       initial={{ opacity: 0, y: -10 }}
+//                       animate={{ opacity: 1, y: 0 }}
+//                       exit={{ opacity: 0, y: -10 }}
+//                       transition={{ duration: 0.2 }}
+//                     >
+//                       <div className="p-4 border-b border-white/10">
+//                         <p className="text-white font-medium text-sm">
+//                           Hi, {userData?.name}
+//                         </p>
+//                         <p className="text-gray-400 text-xs truncate">
+//                           {userData?.email}
+//                         </p>
+//                       </div>
+//                       <div className="py-1">
+//                         {isLoggedIn && (
+//                           <Link
+//                             to="/weepek/Account"
+//                             className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+//                           >
+//                             My Account
+//                           </Link>
+//                         )}
+//                         <Link
+//                           to="/weepek/settings"
+//                           onClick={() => setIsUserDropdownOpen(false)}
+//                           className="block px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors"
+//                         >
+//                           Settings
+//                         </Link>
+//                         <button
+//                           onClick={handleLogout}
+//                           className="w-full text-left px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors"
+//                         >
+//                           Logout
+//                         </button>
+//                       </div>
+//                     </motion.div>
+//                   )}
+//                 </div>
 //               </div>
 
 //               <button
@@ -234,7 +366,7 @@
 //               </button>
 //             </div>
 
-//             {/* Mobile content */}
+//             {/* Mobile menu */}
 //             {isOpen && (
 //               <motion.div
 //                 className="lg:hidden bg-gray-900 border border-white/20 rounded-b-2xl shadow-lg mt-2 px-6 py-4"
@@ -267,7 +399,6 @@
 //                     </span>
 //                   ))}
 
-//                   {/* Get In Touch button */}
 //                   <button
 //                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-2 rounded-lg hover:opacity-90 transition duration-200 outline-offset-10"
 //                     onClick={() => {
@@ -278,6 +409,53 @@
 //                   >
 //                     Get In Touch
 //                   </button>
+
+//                   {/* Mobile user options */}
+//                   <div className="w-full space-y-2 pt-2 border-t border-white/10">
+//                     {isLoggedIn ? (
+//                       <>
+//                         <div className="px-4 py-2 text-center text-primary text-sm">
+//                           Logged in as {userData?.name}
+//                         </div>
+//                         <Link
+//                           to="/weepek/account"
+//                           onClick={() => {
+//                             setIsOpen(false);
+//                             setIsUserDropdownOpen(false);
+//                           }}
+//                           className="block w-full text-center text-primary text-lg font-medium py-2 rounded-md hover:bg-white/10 transition duration-200"
+//                         >
+//                           My Account
+//                         </Link>
+//                         <button
+//                           onClick={() => {
+//                             handleLogout();
+//                             setIsOpen(false);
+//                           }}
+//                           className="w-full text-center text-primary text-lg font-medium py-2 rounded-md hover:bg-white/10 transition duration-200"
+//                         >
+//                           Logout
+//                         </button>
+//                       </>
+//                     ) : (
+//                       <>
+//                         <Link
+//                           to="/weepek/Login"
+//                           onClick={() => setIsOpen(false)}
+//                           className="block w-full text-center text-primary text-lg font-medium py-2 rounded-md hover:bg-white/10 transition duration-200"
+//                         >
+//                           Login
+//                         </Link>
+//                         <Link
+//                           to="/weepek/Signup"
+//                           onClick={() => setIsOpen(false)}
+//                           className="block w-full text-center text-primary text-lg font-medium py-2 rounded-md hover:bg-white/10 transition duration-200"
+//                         >
+//                           Sign Up
+//                         </Link>
+//                       </>
+//                     )}
+//                   </div>
 //                 </div>
 //               </motion.div>
 //             )}
@@ -285,8 +463,8 @@
 //         </motion.nav>
 //       )}
 
-//       {/* Floating Button */}
-//       {(!isHomeInView || location.pathname !== "/weepek/") && (
+//       {/* Floating Button - Shown when not on home page or home section not in view */}
+//       {showFloatingButton && (
 //         <motion.div
 //           initial={{ opacity: 0, scale: 0.5 }}
 //           animate={{ opacity: 1, scale: 1 }}
@@ -301,6 +479,8 @@
 //               aria-label={
 //                 isOpen ? "Close navigation menu" : "Open navigation menu"
 //               }
+//               whileHover={{ scale: 1.05 }}
+//               whileTap={{ scale: 0.95 }}
 //             >
 //               {isOpen ? (
 //                 <ToggleRight className="w-6 h-6" />
@@ -334,13 +514,6 @@
 //                           scrollToSection(item.id);
 //                           setIsOpen(false);
 //                         }}
-//                         onKeyDown={(e) => {
-//                           if (e.key === "Enter" || e.key === " ") {
-//                             scrollToSection(item.id);
-//                             setIsOpen(false);
-//                           }
-//                         }}
-//                         tabIndex={0}
 //                         className="block text-sm font-medium text-gray-800 hover:text-blue-500 w-full text-left py-2 px-3 rounded-md hover:bg-gray-100/50 transition-colors"
 //                         aria-label={`Go to ${item.label} section`}
 //                       >
@@ -354,26 +527,65 @@
 //                     setIsModalOpen(true);
 //                     setIsOpen(false);
 //                   }}
-//                   onKeyDown={(e) => {
-//                     if (e.key === "Enter" || e.key === " ") {
-//                       setIsModalOpen(true);
-//                       setIsOpen(false);
-//                     }
-//                   }}
-//                   tabIndex={0}
-//                   className="cursor-pointer text-sm font-medium text-gray-800 bg-gradient-to-br from-purple-300 to-blue-200 group-hover:bg-gradient-to-br group-hover:from-blue-100 group-hover:to-purple-300 hover:text-blue-600 w-full text-left py-2 px-3 rounded-md hover:bg-gray-100/50 transition-colors"
+//                   className="cursor-pointer text-sm font-medium text-gray-800 bg-gradient-to-br from-purple-300 to-blue-200 hover:text-blue-600 w-full text-left py-2 px-3 rounded-md hover:bg-gray-100/50 transition-colors"
 //                   aria-label="Open contact form"
 //                 >
 //                   Get In Touch
 //                 </button>
-//               </motion.div>
 
+//                 {/* User options in floating menu */}
+//                 <div className="border-t border-gray-200 mt-2 pt-2">
+//                   {isLoggedIn ? (
+//                     <>
+//                       <div className="px-3 py-1 text-xs text-gray-500">
+//                         Logged in as {userData?.name}
+//                       </div>
+//                       <Link
+//                         to="/weepek/account"
+//                         onClick={() => {
+//                           setIsOpen(false);
+//                           setIsUserDropdownOpen(false);
+//                         }}
+//                         className="block text-sm font-medium text-gray-800 hover:text-purple-700 w-full text-left py-2 px-3 rounded-md hover:bg-gray-100/50 transition-colors"
+//                       >
+//                         My Account
+//                       </Link>
+//                       <button
+//                         onClick={() => {
+//                           handleLogout();
+//                           setIsOpen(false);
+//                         }}
+//                         className="block text-sm font-medium text-gray-800 hover:text-purple-700 w-full text-left py-2 px-3 rounded-md hover:bg-gray-100/50 transition-colors"
+//                       >
+//                         Logout
+//                       </button>
+//                     </>
+//                   ) : (
+//                     <>
+//                       <Link
+//                         to="/weepek/Login"
+//                         onClick={() => setIsOpen(false)}
+//                         className="block text-sm font-medium text-gray-800 hover:text-purple-700 w-full text-left py-2 px-3 rounded-md hover:bg-gray-100/50 transition-colors"
+//                       >
+//                         Login
+//                       </Link>
+//                       <Link
+//                         to="/weepek/Signup"
+//                         onClick={() => setIsOpen(false)}
+//                         className="block text-sm font-medium text-gray-800 hover:text-purple-700 w-full text-left py-2 px-3 rounded-md hover:bg-gray-100/50 transition-colors"
+//                       >
+//                         Sign Up
+//                       </Link>
+//                     </>
+//                   )}
+//                 </div>
+//               </motion.div>
 //             )}
 //           </div>
 //         </motion.div>
 //       )}
 
-//       {/* Modal Form */}
+//       {/* Contact Modal */}
 //       {isModalOpen && (
 //         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-md z-50">
 //           <motion.div
@@ -462,8 +674,6 @@
 
 // export default Navbar;
 
-//working 
-
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -495,6 +705,9 @@ function Navbar() {
     { id: "project", label: "Project" },
     { id: "contact", label: "Contact Us", link: "/weepek/contact" }
   ];
+
+  // Filter out "Project" for floating button menu
+  const floatingNavItems = navItems.filter(item => item.id !== "project");
 
   const services = [
     "Landing Page",
@@ -958,7 +1171,7 @@ function Navbar() {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                {navItems.map((item) => (
+                {floatingNavItems.map((item) => (
                   <span key={item.id}>
                     {item.link ? (
                       <Link
@@ -1134,5 +1347,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
- 

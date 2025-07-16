@@ -54,7 +54,6 @@ function App() {
           <Route path="/weepek/Signup" element={<Signup />} />
           <Route path="/weepek/Login" element={<Login />} />
            <Route path="/weepek/Account" element={<Account />} />
-           
           <Route path="/weepek/ForgetPassword" element={<ForgotPassword />} />
         </Routes>
 

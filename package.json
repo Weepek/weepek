@@ -6,7 +6,7 @@
   "homepage": "https://Weepek.github.io/weepek",
   "scripts": {
     "dev": "vite",
-    "build": "PUBLIC_URL=/weepek react-scripts build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
