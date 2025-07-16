@@ -340,7 +340,7 @@ const FAQSection = () => {
         </div>
 
         {/* Enhanced CTA section */}
-        <motion.div
+        {/* <motion.div
           variants={itemVariants}
           className="mt-16 text-center px-6 py-8 rounded-2xl bg-gradient-to-r from-indigo-500/10 to-purple-500/10 backdrop-blur-xl border border-indigo-400/20 shadow-xl relative overflow-hidden"
           whileHover={{ scale: 1.02 }}
@@ -358,7 +358,8 @@ const FAQSection = () => {
             <Mail size={20} />
             Contact Us
           </a>
-        </motion.div>
+        </motion.div> */}
+        
       </motion.div>
     </div>
   );
