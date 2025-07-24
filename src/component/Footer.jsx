@@ -16,7 +16,7 @@ function Footer() {
 
   const socialIcons = [
     { Icon: FaFacebookF, color: "hover:text-blue-600", href: "#" },
-    { Icon: RiTwitterXFill, color: "hover:text-black", href: "#" },
+    // { Icon: RiTwitterXFill, color: "hover:text-black", href: "#" },
     {
       Icon: FaInstagram,
       color: "hover:text-pink-500",
@@ -27,7 +27,7 @@ function Footer() {
       color: "hover:text-green-600",
       href: "https://wa.me/7010039610"
     },
-    { Icon: FaLinkedin, color: "hover:text-blue-500", href: "#" }
+    // { Icon: FaLinkedin, color: "hover:text-blue-500", href: "#" }
   ];
 
   const footerLinks = [
@@ -44,7 +44,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Brand Section */}
           <motion.div
-            className="md:col-span-4 flex flex-col items-start"
+            className="md:col-span-4 flex flex-col items-center md:items-start"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -53,12 +53,12 @@ function Footer() {
               className="flex items-center mb-4 cursor-pointer"
               onClick={() => navigate("/weepek/")}
             >
-              <img src={logo} alt="Weepek logo" className="w-10 h-10 mr-2" />
+              <img src={logo} alt="Weepek logo" className="w-12" />
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 text-transparent bg-clip-text">
-                Weepek
+                eepek
               </span>
             </div>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="text-gray-400 text-sm mb-4 text-center md:text-start">
               Innovating digital experiences for tomorrow's world.
             </p>
             <div className="flex space-x-4">
@@ -85,14 +85,14 @@ function Footer() {
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.5, delay: 0.1 }}
 >
-  <h3 className="text-lg font-semibold mb-6 text-white text-center">
+  <h3 className="text-lg font-semibold mb-6 text-white text-center ">
     Quick Links
   </h3>
   <ul className="space-y-3">
     {footerLinks.map((link, index) => (
       <motion.li 
         key={index} 
-        className="flex justify-center"
+        className="flex justify-center  "
         whileHover={{ 
           x: 5,
           transition: { type: "spring", stiffness: 300 }
@@ -160,11 +160,11 @@ function Footer() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-lg font-semibold mb-4 text-white">
+            <h3 className="text-lg font-semibold mb-4 text-center md:text-start text-white">
               Contact Us
             </h3>
-            <div className="space-y-3 text-sm text-gray-400">
-              <div className="flex items-center">
+            <div className="space-y-3 text-sm text-gray-400 ">
+              <div className="flex items-center justify-center md:justify-start">
                 <svg
                   className="w-4 h-4 mr-2 text-purple-400"
                   fill="none"
@@ -186,7 +186,7 @@ function Footer() {
                   weepek.pvt@gmail.com
                 </a>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center justify-center md:justify-start">
                 <svg
                   className="w-4 h-4 mr-2 text-blue-400"
                   fill="none"
