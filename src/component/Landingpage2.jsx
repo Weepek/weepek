@@ -1,12 +1,7 @@
- 
- 
 
  
 
-
-//working 
-
-import React, { useEffect, useRef, useCallback, memo, useMemo } from "react";
+import React, { useRef, useCallback, memo, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { CalendarDays } from "lucide-react";
 import { gsap } from "gsap";
@@ -109,198 +104,9 @@ const Particle = memo(({ type, count }) => {
 const LandingPage = () => {
   const containerRef = useRef(null);
   const titleCharsRef = useRef([]);
-  const titleContainerRef = useRef(null);
 
-  // const setupHoverAnimations = useCallback(() => {
-  //   titleCharsRef.current.forEach((char) => {
-  //     const hoverTl = gsap.timeline({ paused: true });
-  //     hoverTl
-  //       .to(char, {
-  //         y: -15,
-  //         scale: 1.2,
-  //         color: "#a5c4f0",
-  //         duration: 0.2,
-  //         ease: "power2.out"
-  //       })
-  //       .to(char, {
-  //         y: 0,
-  //         scale: 1,
-  //         color: "#5813f3",
-  //         duration: 0.3,
-  //         ease: "bounce.out"
-  //       })
-  //       .to(
-  //         char,
-  //         {
-  //           color: "transparent",
-  //           backgroundImage:
-  //             "linear-gradient(305deg, #a5c4f0, #f1eff7, #5813f3)",
-  //           backgroundClip: "text",
-  //           duration: 0.4
-  //         },
-  //         ">"
-  //       )
-  //       .to(
-  //         char,
-  //         {
-  //           color: "transparent",
-  //           backgroundImage: "none",
-  //           duration: 0.3
-  //         },
-  //         "0.2"
-  //       );
-
-  //     char.addEventListener("mouseenter", () => hoverTl.restart());
-  //     char.addEventListener("mouseleave", () => {
-  //       gsap.to(char, {
-  //         y: 0,
-  //         scale: 1,
-  //         color: "transparent",
-  //         backgroundImage: "none",
-  //         backgroundClip: "initial",
-  //         duration: 0.3
-  //       });
-  //     });
-  //   });
-  // }, []);
-
-  
-  // useGSAP(() => {
-  //   const titleSplit = new SplitText(".landing-hero-title", {
-  //     type: "words, chars, lines",
-  //     charsClass:"char",
-  //     wordsClass: "word",
-   
-  //   });
-
-  //   titleCharsRef.current = gsap.utils.toArray(".word");
-
-  //   gsap.set(titleCharsRef.current, {
-  //     opacity: 0,
-  //     y: 100,
-  //     rotationX: -90,
-  //     transformOrigin: "0% 50% -50"
-  //   });
-
-  //   const titleTl = gsap.timeline({
-  //     onComplete: () => {
-  //       setupHoverAnimations();
-  //       gsap.to(".word", {
-  //         duration: 0,
-  //         backgroundImage:
-  //           "linear-gradient(45deg, #f1eff7 ,#f1eff7, #5813f3)",
-  //         color: "transparent",
-  //         backgroundClip: "text",
-  //         "-webkit-background-clip": "text",
-  //         stagger: {
-  //           each: 0.1,
-  //           from: "center",
-  //           repeat: 2,
-  //           yoyo: true
-  //         },
-  //         ease: "sine.inOut"
-  //       });
-  //     }
-  //   });
-
-  //   // Title animation - fast and smooth
-  //   titleTl.to(titleCharsRef.current, {
-  //     duration: 0.2,
-  //     opacity: 1,
-  //     y: 0,
-  //     rotationX: 0,
-  //     stagger: 0.015,
-  //     ease: "back.out(1.2)"
-  //   });
-
-  //   const paragraphSplit = new SplitText(".landing-sub-title", {
-  //     type: "words",
-  //     wordsClass: "p-word"
-  //   });
-
-  //   gsap.set(paragraphSplit.words, {
-  //     opacity: 0,
-  //     y: 100,
-  //     scale: 0.9
-  //   });
-
-  //   // Animate paragraph AFTER title completes
-  //   titleTl.to(paragraphSplit.words, {
-  //     duration: 0.5,
-  //     opacity: 1,
-  //     y: 0,
-  //     scale: 1,
-  //     stagger: 0.030,
-  //     ease: "power2.out",
-  //     delay: 0.2
-  //   });
-
-  //   const herotl = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: ".hero-container",
-  //       start: "50% top",
-  //       end: "90% bottom",
-  //       scrub: true,
-  //       stagger: 0.9
-  //     }
-  //   });
-
-  //   herotl.to(".hero-container", {
-  //     ease: "power2.inOut",
-  //     scale: 0.9,
-  //     duration: 1.5,
-  //     stagger: 0.5,
-  //     opacity: 1,
-  //     pin: true
-  //   });
-
-  //   herotl.to(".hero-content", {
-  //     y: 0,
-  //     scale: 1.1,
-  //     opacity: 1,
-  //     ease: "power2.inOut",
-  //     duration: 1.5,
-  //     stagger: 0.5
-  //   });
-
-  //   gsap.to(".particles", {
-  //     ease: "none",
-  //     opacity: 1,
-  //     scrollTrigger: {
-  //       trigger: ".particles",
-  //       scrub: true,
-  //       start: "50% top",
-  //       end: "bottom bottom"
-  //     }
-  //   });
-
-  //   gsap.to(".background-image", {
-  //     y: 80,
-  //     ease: "none",
-  //     scrollTrigger: {
-  //       trigger: containerRef.current,
-  //       scrub: true,
-  //       start: "top bottom",
-  //       end: "bottom top"
-  //     }
-  //   });
-
-  //   gsap.to(".animated-gradient", {
-  //     backgroundPosition: "200% 50%",
-  //     ease: "none",
-  //     scrollTrigger: {
-  //       trigger: containerRef.current,
-  //       scrub: true,
-  //       start: "top bottom",
-  //       end: "bottom bottom"
-  //     }
-  //   });
-  // }, { scope: containerRef });
-
-
- const setupHoverAnimations = useCallback(() => {
+  const setupHoverAnimations = useCallback(() => {
     titleCharsRef.current.forEach((char) => {
-      // Get all the character elements within each word
       const chars = char.querySelectorAll('.char');
       
       chars.forEach((c) => {
@@ -347,8 +153,8 @@ const LandingPage = () => {
             y: 0,
             scale: 1,
             color: "transparent",
-            backgroundImage: "none",
-            backgroundClip: "initial",
+            backgroundImage: "linear-gradient(45deg,#f1eff7, #f1eff7, #8958f7)",
+            backgroundClip: "text",
             duration: 0.3
           });
         });
@@ -357,53 +163,68 @@ const LandingPage = () => {
   }, []);
 
   useGSAP(() => {
+    // Title animation setup
     const titleSplit = new SplitText(".landing-hero-title", {
-      type: "words,chars",
+      type: "chars,words",
       charsClass: "char",
       wordsClass: "word"
     });
 
+    // Store references to the word elements
     titleCharsRef.current = gsap.utils.toArray(".word");
 
     // Set initial state for each character
     gsap.set(".char", {
       opacity: 0,
-      y: 100,
-      rotationX: -90,
-      transformOrigin: "0% 50% -50",
-      display: "inline-block" // Ensure characters can be transformed individually
+      y: 40,
+      rotationX: 90,
+      transformOrigin: "50% 50% -50",
+      display: "inline-block"
     });
 
+    // Title animation timeline
     const titleTl = gsap.timeline({
-      onComplete: () => {
-        setupHoverAnimations();
-        gsap.to(".char", {
-          duration: 0,
-          backgroundImage: "linear-gradient(45deg, #f1eff7 ,#f1eff7, #8958f7)",
-          color: "transparent",
-          backgroundClip: "text",
-          "-webkit-background-clip": "text",
-          stagger: {
-            each: 0.1,
-            from: "center",
-            repeat: 2,
-            yoyo: true
-          },
-          ease: "sine.inOut"
-        });
-      }
+      defaults: { ease: "power3.out" }
     });
 
-    // Animate each character individually
+    // Animate each character with a smooth drop-down effect
     titleTl.to(".char", {
-      duration: 0.88,
+      duration: 0.8,
       opacity: 1,
       y: 0,
       rotationX: 0,
-      stagger: 0.015,
-      ease: "circ.in"
+      stagger: {
+        each: 0.03,
+        from: "left"
+      }
     });
 
+    // Add a subtle color transition after characters appear
+    titleTl.to(".char", {
+      duration: 0.5,
+      color: "transparent",
+      backgroundImage: "linear-gradient(45deg,#f1eff7, #f1eff7, #8958f7)",
+      backgroundClip: "text",
+      "-webkit-background-clip": "text",
+      stagger: {
+        each: 0.02,
+        from: "center"
+      }
+    }, ">0.2");
+
+    // Final state - ensure text remains visible with gradient
+    titleTl.to(".char", {
+      duration: 0.3,
+      color: "transparent",
+      backgroundImage: "linear-gradient(45deg, #f1eff7, #f1eff7, #8958f7)",
+      backgroundClip: "text",
+      "-webkit-background-clip": "text"
+    }, ">0.3");
+
+    // Set up hover animations after the initial animation completes
+    titleTl.call(setupHoverAnimations, [], "+=0.5");
+
+    // Paragraph animation setup
     const paragraphSplit = new SplitText(".landing-sub-title", {
       type: "words",
       wordsClass: "p-word"
@@ -411,60 +232,34 @@ const LandingPage = () => {
 
     gsap.set(paragraphSplit.words, {
       opacity: 0,
-      y: 100,
-      scale: 0.9
+      y: 20
     });
 
-    // Animate paragraph AFTER title completes
+    // Paragraph animation - starts after title completes
     titleTl.to(paragraphSplit.words, {
-      duration: 0.5,
+      duration: 0.4,
       opacity: 1,
       y: 0,
-      scale: 1,
-      stagger: 0.030,
-      ease: "power2.out",
-      delay: 0.2
-    });
+      stagger: 0.02,
+      ease: "sine.out"
+    }, ">0.1");
 
-    const herotl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero-container",
-        start: "50% top",
-        end: "90% bottom",
-        scrub: true,
-        stagger: 0.9
-      }
-    });
+    // Divider line animation
+    titleTl.from(".divider-line", {
+      scaleX: 0,
+      duration: 0.3,
+      ease: "power2.out"
+    }, "<0.1");
 
-    herotl.to(".hero-container", {
-      ease: "power2.inOut",
-      scale: 0.9,
-      duration: 1.5,
-      stagger: 0.5,
-      opacity: 1,
-      pin: true
-    });
+    // Button animation
+    titleTl.from(".creative-button", {
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+      ease: "back.out(1.7)"
+    }, "<0.2");
 
-    herotl.to(".hero-content", {
-      y: 0,
-      scale: 1.1,
-      opacity: 1,
-      ease: "power2.inOut",
-      duration: 1.5,
-      stagger: 0.5
-    });
-
-    gsap.to(".particles", {
-      ease: "none",
-      opacity: 1,
-      scrollTrigger: {
-        trigger: ".particles",
-        scrub: true,
-        start: "50% top",
-        end: "bottom bottom"
-      }
-    });
-
+    // Scroll animations
     gsap.to(".background-image", {
       y: 80,
       ease: "none",
@@ -476,17 +271,15 @@ const LandingPage = () => {
       }
     });
 
-    gsap.to(".animated-gradient", {
-      backgroundPosition: "200% 50%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        scrub: true,
-        start: "top bottom",
-        end: "bottom bottom"
-      }
+    // Continuous floating animation for particles
+    gsap.to(".particle", {
+      y: 15,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
     });
-  }, { scope: containerRef });
+  }, { scope: containerRef, dependencies: [setupHoverAnimations] });
 
   const handleImageError = useCallback((e) => {
     e.target.style.backgroundImage = `url(${FALLBACK_IMAGE})`;
@@ -503,29 +296,32 @@ const LandingPage = () => {
         onError={handleImageError}
       />
 
-      <Particle id="particles" type="particle" count={12} />
-      <Particle type="star" count={20} />
+      <div className="particles">
+        <Particle type="particle" count={12} />
+        <Particle type="star" count={20} />
+      </div>
 
       <div className="content-container relative z-10 text-center flex flex-col justify-center items-center px-4 sm:px-6 max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-5xl hero-content">
         <h1
-          ref={titleContainerRef}
-            style={{ fontFamily: "LEMONMILK" }}
-          className="text-2xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-5xl     text-transparent    drop-shadow-md transition-all duration-300 landing-hero-title cursor-default"
+          style={{ fontFamily: "LEMONMILK" }}
+          className="text-2xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-5xl text-transparent drop-shadow-md landing-hero-title cursor-default"
         >
-          <span>Weepek </span>Your Web{" "}
-          <span className="block">Development Partner</span>
+          <span className="word">Weepek </span>
+          <span className="word">Your Web </span>
+          <span className="word block">Development Partner</span>
         </h1>
+        
         <div className="flex justify-center my-4">
-          <div className="w-[40px] h-[2px] bg-gradient-to-r from-blue-200 to-purple-400 rounded-3xl"></div>
+          <div className="divider-line w-[40px] h-[2px] bg-gradient-to-r from-blue-200 to-purple-400 rounded-3xl"></div>
         </div>
 
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-xl font-poppins text-gray-100 m-2 mt-6 md:mt-8 px-3 md:px-1 landing-sub-title">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-xl font-poppins text-gray-100 m-2 mt-6 md:mt-8 px-3 md:px-1 landing-sub-title">
           A creative digital studio crafting websites, apps, and branding with
           purpose. Built for businesses of every scale, powered by research, and
           driven by design excellence.
         </p>
 
-        <div className="mt-6 sm:mt-8">
+        <div className="mt-6 sm:mt-8 creative-button">
           <CreativeButton />
         </div>
       </div>
@@ -534,4 +330,3 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
- 
