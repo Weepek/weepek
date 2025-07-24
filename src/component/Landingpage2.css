@@ -169,6 +169,8 @@ body {
  
 
 /* LandingPage2.css */
+
+
 html {
   scroll-behavior: smooth;
 }
@@ -195,10 +197,10 @@ body {
 
 .gradient-text {
   
-  background: linear-gradient(to top, #ac7ef5 , #e4e9f1  );
+  background: linear-gradient(45deg, #f1eff7 ,#f1eff7, #5813f3);
    
-  -webkit-background-clip: text;
-  background-clip: text;
+  -webkit-background-clip: word;
+  background-clip: word;
   -webkit-text-fill-color: transparent;
   
 }
@@ -233,4 +235,10 @@ body {
 @keyframes twinkle {
   0%, 100% { opacity: 0.2; }
   50% { opacity: 1; }
+}
+@font-face {
+  font-family: 'LEMONMILK';
+  src: url('../../public/Designer.otf') format('opentype');
+  font-weight: normal;
+  font-style: bold;
 }
