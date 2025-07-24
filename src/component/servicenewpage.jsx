@@ -987,7 +987,7 @@ const VerticalHoverCard = () => {
                   {card.desc}
                 </p>
                 
-                <motion.button 
+                {/* <motion.button 
                   className={`mt-auto text-sm font-medium ${card.textColor} hover:text-white px-4 py-2 rounded-lg border ${card.borderColor} ${card.hoverColor} transition-colors duration-300 flex items-center`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -996,7 +996,7 @@ const VerticalHoverCard = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </motion.button>
+                </motion.button> */}
               </div>
             </motion.div>
           ))}
