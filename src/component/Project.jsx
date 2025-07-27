@@ -1,4 +1,3 @@
- 
 // import React, { useRef, useEffect } from "react";
 // import { motion } from "framer-motion";
 // import { ReactTyped } from "react-typed";
@@ -163,10 +162,10 @@
 // const workTitle = workTitleRef.current;
 // if (workTitle) {
 //   const chars = workTitle.textContent.split('');
-//   workTitle.innerHTML = chars.map(char => 
+//   workTitle.innerHTML = chars.map(char =>
 //     `<span class="char" style="display: inline-block; opacity: 1;">${char === ' ' ? '&nbsp;' : char}</span>`
 //   ).join('');
-  
+
 //   gsap.fromTo(
 //     workTitle.querySelectorAll('.char'),
 //     {
@@ -189,7 +188,7 @@
 //         start: "10% top", // Changed to trigger earlier
 //         end: "top 60%",
 //         scrub: false, // Changed to snap animation
-//         toggleActions: "play play none none", // Will play on enter and  
+//         toggleActions: "play play none none", // Will play on enter and
 //         markers: false // Set to true for debugging if needed
 //       }
 //     }
@@ -427,7 +426,7 @@
 //     <section
 //       className="py-20 w-screen project z-20  relative overflow-hidden will-change-transform"
 //       ref={sectionRef}
-     
+
 //       // style={{
 //       //   background:
 //       //     "linear-gradient(135deg, #000000 0%, #1a0033 30%, #330066 70%, #000000 100%)",
@@ -562,9 +561,6 @@
 // };
 
 // export default React.memo(Project);
- 
- 
-
 
 import React, { useRef, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
@@ -656,7 +652,7 @@ const Project = () => {
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -714,7 +710,8 @@ const Project = () => {
       });
 
       // Optimized project cards animation
-      const cards = projectCardsRef.current?.querySelectorAll(".project-card-item");
+      const cards =
+        projectCardsRef.current?.querySelectorAll(".project-card-item");
       if (cards) {
         gsap.from(cards, {
           opacity: 0,
@@ -777,7 +774,8 @@ const Project = () => {
         }
       });
 
-      const cards = projectCardsRef.current?.querySelectorAll(".project-card-item");
+      const cards =
+        projectCardsRef.current?.querySelectorAll(".project-card-item");
       if (cards) {
         gsap.from(cards, {
           opacity: 0,
@@ -797,20 +795,23 @@ const Project = () => {
   }, []);
 
   // Memoize project data to prevent unnecessary re-renders
-  const projects = useMemo(() => [
-    {
-      title: "LOGO DESIGN",
-      subtitle: "Web Development",
-      image: logodesign2,
-      // url: "https://example.com/another-project"
-    },
-    {
-      title: "LOGO DESIGN",
-      subtitle: "Web Development",
-      image: logodesign,
-      // url: "https://example.com/another-project"
-    }
-  ], []);
+  const projects = useMemo(
+    () => [
+      {
+        title: "LOGO DESIGN",
+        subtitle: "Web Development",
+        image: logodesign2
+        // url: "https://example.com/another-project"
+      },
+      {
+        title: "LOGO DESIGN",
+        subtitle: "Web Development",
+        image: logodesign
+        // url: "https://example.com/another-project"
+      }
+    ],
+    []
+  );
 
   return (
     <section
@@ -893,6 +894,7 @@ const Project = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
+          
             <motion.h2
               ref={uiUxTitleRef}
               className="text-3xl tracking-[.20em] font-Clash text-center text-white/50 overflow-hidden whitespace-nowrap"
@@ -900,6 +902,9 @@ const Project = () => {
             >
               UI/UX & Design
             </motion.h2>
+              <div className="flex justify-center my-4">
+              <div className="divider-line w-[40px] h-[2px] bg-gradient-to-r from-blue-200 to-purple-400 rounded-3xl"></div>
+            </div>
           </motion.div>
 
           <motion.div

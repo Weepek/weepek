@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import gsap from "gsap";
@@ -90,23 +87,24 @@ const cardData = [
     textColor: "text-indigo-300",
     borderColor: "border-indigo-400/50",
     hoverColor: "hover:bg-indigo-400/10"
-  },
+  }
 ];
 
 // 3D Floating Orb Component
 const FloatingOrb = ({ position, color }) => {
   const meshRef = useRef();
-  
+
   useFrame((state, delta) => {
     meshRef.current.rotation.x += delta * 0.15;
     meshRef.current.rotation.y += delta * 0.1;
-    meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.01;
+    meshRef.current.position.y +=
+      Math.sin(state.clock.elapsedTime * 0.5) * 0.01;
   });
 
   return (
     <Sphere ref={meshRef} position={position}>
-      <meshStandardMaterial 
-        color={color} 
+      <meshStandardMaterial
+        color={color}
         emissive={color}
         emissiveIntensity={0.3}
         roughness={0.3}
@@ -119,7 +117,7 @@ const FloatingOrb = ({ position, color }) => {
 // 3D Scene Background
 const ThreeDScene = () => {
   return (
-    <Canvas 
+    <Canvas
       camera={{ position: [0, 0, 10], fov: 25 }}
       gl={{ antialias: true, alpha: true }}
       performance={{ min: 0.5 }}
@@ -129,10 +127,10 @@ const ThreeDScene = () => {
       <FloatingOrb position={[-3, 1, 0]} color="#8a2be2" />
       <FloatingOrb position={[3, -1, 0]} color="#1e90ff" />
       <FloatingOrb position={[0, 2, -5]} color="#ff6347" />
-      <OrbitControls 
-        enableZoom={false} 
-        enablePan={false} 
-        enableRotate={false} 
+      <OrbitControls
+        enableZoom={false}
+        enablePan={false}
+        enableRotate={false}
       />
     </Canvas>
   );
@@ -144,7 +142,7 @@ const VerticalHoverCard = () => {
     target: containerRef,
     offset: ["start start", "end end"]
   });
-  
+
   // Parallax effects
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -50]);
@@ -152,20 +150,20 @@ const VerticalHoverCard = () => {
 
   useEffect(() => {
     // Apply scrollbar hiding style
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.innerHTML = hideScrollbar;
     document.head.appendChild(style);
 
     // Smooth scroll behavior
     const smoothScroll = () => {
-      document.documentElement.style.scrollBehavior = 'smooth';
+      document.documentElement.style.scrollBehavior = "smooth";
       return () => {
-        document.documentElement.style.scrollBehavior = 'auto';
+        document.documentElement.style.scrollBehavior = "auto";
       };
     };
-    
+
     const cleanup = smoothScroll();
-    
+
     // GSAP animations
     gsap.utils.toArray(".card").forEach((card, index) => {
       gsap.from(card, {
@@ -177,7 +175,7 @@ const VerticalHoverCard = () => {
         scrollTrigger: {
           trigger: card,
           start: "top 85%",
-          toggleActions: "play none none none",
+          toggleActions: "play none none none"
         }
       });
     });
@@ -185,37 +183,57 @@ const VerticalHoverCard = () => {
     return () => {
       cleanup();
       document.head.removeChild(style);
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
   return (
     <>
       <Helmet>
-        <title>Our Services | Custom Web Development & Digital Solutions</title>
-        <meta name="description" content="Explore our comprehensive digital services including custom website development, mobile apps, branding, SEO, and automation solutions tailored for your business growth." />
-        <meta name="keywords" content="web development services, mobile app development, SEO optimization, digital marketing, RPA automation, branding services" />
-        <meta property="og:title" content="Our Digital Services | Web Development & More" />
-        <meta property="og:description" content="Discover our full range of digital services designed to transform your online presence and business operations." />
+        <meta
+          name="description"
+          content="Explore our comprehensive digital services including custom website development, mobile apps, branding, SEO, and automation solutions tailored for your business growth."
+        />
+        <meta
+          name="keywords"
+          content="web development services, mobile app development, SEO optimization, digital marketing, RPA automation, branding services"
+        />
+        <meta
+          property="og:title"
+          content="Our Digital Services | Web Development & More"
+        />
+        <meta
+          property="og:description"
+          content="Discover our full range of digital services designed to transform your online presence and business operations."
+        />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://yourwebsite.com/services" />
-        <meta property="og:image" content="https://yourwebsite.com/images/services-preview.jpg" />
+        <meta
+          property="og:image"
+          content="https://yourwebsite.com/images/services-preview.jpg"
+        />
         <link rel="canonical" href="https://yourwebsite.com/services" />
       </Helmet>
 
       <section
         ref={containerRef}
         className="relative overflow-hidden min-h-screen w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8"
-        style={{ willChange: 'transform' }}
+        style={{ willChange: "transform" }}
         aria-labelledby="services-heading"
       >
         {/* 3D Background Scene */}
-        <div className="absolute inset-0 w-full h-full opacity-10 pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute inset-0 w-full h-full opacity-10 pointer-events-none"
+          aria-hidden="true"
+        >
           <ThreeDScene />
         </div>
 
         {/* Floating particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute inset-0 overflow-hidden pointer-events-none"
+          aria-hidden="true"
+        >
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
@@ -224,18 +242,18 @@ const VerticalHoverCard = () => {
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
                 width: `${Math.random() * 8 + 2}px`,
-                height: `${Math.random() * 8 + 2}px`,
+                height: `${Math.random() * 8 + 2}px`
               }}
               animate={{
                 x: [0, `${Math.random() * 100 - 50}%`],
                 y: [0, `${Math.random() * 100 - 50}%`],
-                opacity: [0.1, 0.5, 0.1],
+                opacity: [0.1, 0.5, 0.1]
               }}
               transition={{
                 duration: 20 + Math.random() * 20,
                 repeat: Infinity,
                 repeatType: "reverse",
-                ease: "linear",
+                ease: "linear"
               }}
               aria-hidden="true"
             />
@@ -243,24 +261,22 @@ const VerticalHoverCard = () => {
         </div>
 
         {/* Section content with parallax */}
-        <motion.div 
+        <motion.div
           className="relative z-10 max-w-7xl mx-auto"
           style={{ y: y2 }}
         >
           {/* Title */}
-          <motion.div 
+          <motion.div
             className="text-center mb-16 lg:mb-24"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.h4
-              className="text-sm md:text-base font-medium text-purple-400 mb-3"
-            >
+            <motion.h4 className="text-sm md:text-base font-medium text-purple-400 mb-3">
               OUR EXPERTISE
             </motion.h4>
 
-            <motion.h2
+            {/* <motion.h2
               id="services-heading"
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
             >
@@ -268,12 +284,37 @@ const VerticalHoverCard = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
                 Digital Solutions
               </span>
-            </motion.h2>
-
-            <motion.p
-              className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            </motion.h2> */}
+            <motion.h2
+              id="services-heading"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
             >
-              We deliver end-to-end digital experiences that drive growth, enhance engagement, and transform businesses across industries.
+              Comprehensive{" "}
+              <span className="inline-flex overflow-hidden">
+                {"Digital Solutions".split("").map((letter, i) => (
+                  <motion.span
+                    key={i}
+                    className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500"
+                    animate={{
+                      y: [0, -5, 0],
+                      opacity: [1.5, 0.5, 1]
+                    }}
+                    transition={{
+                      duration: 2,
+                      delay: i * 0.05,
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      ease: "easeInOut"
+                    }}
+                  >
+                    {letter === " " ? "\u00A0" : letter}
+                  </motion.span>
+                ))}
+              </span>
+            </motion.h2>
+            <motion.p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              We deliver end-to-end digital experiences that drive growth,
+              enhance engagement, and transform businesses across industries.
             </motion.p>
           </motion.div>
 
@@ -286,7 +327,7 @@ const VerticalHoverCard = () => {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-                transition={{ 
+                transition={{
                   duration: 0.6,
                   delay: index * 0.1,
                   type: "spring",
@@ -299,9 +340,9 @@ const VerticalHoverCard = () => {
                 }}
               >
                 <div className="relative z-10 w-full h-full flex flex-col items-center">
-                  <motion.div 
+                  <motion.div
                     className={`w-20 h-20 rounded-xl ${card.gradient} p-3 mb-6 flex items-center justify-center shadow-lg`}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.1,
                       transition: { duration: 0.3 }
                     }}
@@ -316,11 +357,11 @@ const VerticalHoverCard = () => {
                       height="48"
                     />
                   </motion.div>
-                  
+
                   <h3 className={`text-2xl font-bold ${card.textColor} mb-4`}>
                     {card.title}
                   </h3>
-                  
+
                   <p className="text-gray-200 mb-6 leading-relaxed">
                     {card.desc}
                   </p>
