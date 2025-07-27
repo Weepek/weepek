@@ -1,5 +1,5 @@
 
- 
+
 
 import React, { useRef, useCallback, memo, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -10,6 +10,8 @@ import { CALENDLY_URL, HERO_IMAGE, FALLBACK_IMAGE } from "./constants";
 import "./LandingPage2.css";
 import SplitText from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
+// import Head from "next/head"; // Add this import for Next.js or equivalent for your framework
+import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -54,7 +56,7 @@ const CreativeButton = memo(() => {
   return (
     <motion.button
       onClick={openCalendlyPopup}
-      aria-label="Book a meeting"
+      aria-label="Book a meeting with Weepek web development team"
       className="relative inline-flex items-center gap-2 px-3 md:px-6 py-3 text-white font-semibold text-base sm:text-lg rounded-full overflow-hidden group focus:outline focus:outline-purple-400 mt-5"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -96,6 +98,7 @@ const Particle = memo(({ type, count }) => {
           animationDuration,
           position: "absolute"
         }}
+        aria-hidden="true" // Hide decorative elements from screen readers
       />
     )
   );
@@ -237,12 +240,12 @@ const LandingPage = () => {
 
     // Paragraph animation - starts after title completes
     titleTl.to(paragraphSplit.words, {
-      duration: 0.4,
+      duration: 0.2,
       opacity: 1,
       y: 0,
-      stagger: 0.02,
+      stagger: 0.03,
       ease: "sine.out"
-    }, ">0.1");
+    },  );
 
     // Divider line animation
     titleTl.from(".divider-line", {
@@ -286,47 +289,68 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative min-h-screen w-full z-0 overflow-hidden flex items-center justify-center animated-gradient hero-container"
-    >
-      <div
-        className="background-image absolute inset-0 bg-cover bg-center z-0"
-        style={{ backgroundImage: `url(${HERO_IMAGE})` }}
-        onError={handleImageError}
-      />
+    <>
+      <Helmet>
+        <title>Weepek - Your Web Development Partner | Custom Websites & Apps</title>
+        <meta name="description" content="Weepek is a creative digital studio crafting websites, apps, and branding with purpose. Partner with us for custom web development solutions." />
+        <meta name="keywords" content="web development, custom websites, app development, digital studio, branding, Weepek" />
+        <meta property="og:title" content="Weepek - Your Web Development Partner" />
+        <meta property="og:description" content="Creative digital studio crafting websites, apps, and branding with purpose. Built for businesses of every scale." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://weepek.github.io/weepek/" />
+        <meta property="og:image" content={HERO_IMAGE} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://weepek.github.io/weepek/" />
+        <meta name="theme-color" content="#5813f3" />
+      </Helmet>
 
-      <div className="particles">
-        <Particle type="particle" count={12} />
-        <Particle type="star" count={20} />
-      </div>
+      <main
+        ref={containerRef}
+        className="relative min-h-screen w-full z-0 overflow-hidden flex items-center justify-center animated-gradient hero-container"
+        role="main"
+      >
+        <div
+          className="background-image absolute inset-0 bg-cover bg-center z-0"
+          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+          onError={handleImageError}
+          aria-hidden="true"
+        />
 
-      <div className="content-container relative z-10 text-center flex flex-col justify-center items-center px-4 sm:px-6 max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-5xl hero-content">
-        <h1
-          style={{ fontFamily: "LEMONMILK" }}
-          className="text-2xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-5xl text-transparent drop-shadow-md landing-hero-title cursor-default"
-        >
-          <span className="word">Weepek </span>
-          <span className="word">Your Web </span>
-          <span className="word block">Development Partner</span>
-        </h1>
-        
-        <div className="flex justify-center my-4">
-          <div className="divider-line w-[40px] h-[2px] bg-gradient-to-r from-blue-200 to-purple-400 rounded-3xl"></div>
+        <div className="particles">
+          <Particle type="particle" count={12} />
+          <Particle type="star" count={20} />
         </div>
 
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-xl font-poppins text-gray-100 m-2 mt-6 md:mt-8 px-3 md:px-1 landing-sub-title">
-          A creative digital studio crafting websites, apps, and branding with
-          purpose. Built for businesses of every scale, powered by research, and
-          driven by design excellence.
-        </p>
+        <section className="content-container relative z-10 text-center flex flex-col justify-center items-center px-4 sm:px-6 max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-5xl hero-content">
+          <h1
+            style={{ fontFamily: "LEMONMILK" }}
+            className="text-2xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-5xl text-transparent drop-shadow-md landing-hero-title cursor-default"
+          >
+            <span className="word">Weepek </span>
+            <span className="word">Your Web </span>
+            <span className="word block">Development Partner</span>
+          </h1>
+          
+          <div className="flex justify-center my-4">
+            <div className="divider-line w-[40px] h-[2px] bg-gradient-to-r from-blue-200 to-purple-400 rounded-3xl"></div>
+          </div>
 
-        <div className="mt-6 sm:mt-8 creative-button">
-          <CreativeButton />
-        </div>
-      </div>
-    </div>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-xl font-poppins text-gray-100 m-2 mt-6 md:mt-8 px-3 md:px-1 landing-sub-title">
+            A creative digital studio crafting websites, apps, and branding with
+            purpose. Built for businesses of every scale, powered by research, and
+            driven by design excellence.
+          </p>
+
+          <div className="mt-6 sm:mt-8 creative-button">
+            <CreativeButton />
+          </div>
+        </section>
+      </main>
+    </>
   );
 };
 
 export default LandingPage;
+ 
+
+
